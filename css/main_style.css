@@ -42,8 +42,8 @@ body{
 
 .button {
     border-radius: 50%;
-    width: 110px;
-    height: 90px;
+    width: 20%;
+    height: 20%;
     text-align:center;
     background-color : transparent;
     font-family: 'Helvetica', sans-serif;
