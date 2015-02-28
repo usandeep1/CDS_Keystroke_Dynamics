@@ -6,7 +6,7 @@ $(document).ready(function(){
         return false;
     });    
 
-    $('input[type=submit]').click(function() {
+    $('input[type=submit]').keyup(function() {
         // find the next empty slot and fill it with a circle
         $('#successMsg').text('');
         for (var i=1; i <= 4; i++){
@@ -28,7 +28,7 @@ $(document).ready(function(){
         }
     });
 
-    $('#backspace').click(function() {
+    $('#backspace').keyup(function() {
         for (var i=1; i <= 4; i++){
             var nextSlot = $('li:nth-last-of-type(' + i + ')');
             if (nextSlot.text() === 'O'){
