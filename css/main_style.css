@@ -40,7 +40,7 @@ body{
     display:inline-block;
 }
 
-.button {
+.number {
     border-radius: 50%;
     width: 300px;
     height: 300px;
@@ -53,7 +53,7 @@ body{
     color: #fff;
 }
 
-input[type=submit]:active {
+.number:active {
     background-color: #E0FFFF;
 
 }
