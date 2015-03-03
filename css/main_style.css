@@ -15,7 +15,8 @@ body{
 }
 
 #input_message {
-    margin-top: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
     text-align: center;
     font-size: 2.5em;
     color: #fff;
@@ -25,7 +26,7 @@ body{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5%;
+    margin-bottom: 2,5%;
     font-size: 2.5em;
     color: #fff;
 }
@@ -86,7 +87,6 @@ body{
     clear: both;
     padding: 0px;
     margin: 0px;
-    margin-bottom: 2.5%;
 }
 
 /*  COLUMN SETUP  */
