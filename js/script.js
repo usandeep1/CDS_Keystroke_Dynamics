@@ -1,10 +1,23 @@
 $(document).ready(function(){
 
+    Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
+    
+    var TestObject = Parse.Object.extend("TestObject");
+    var testObject = new TestObject();
+      testObject.save({foo: "bar"}, {
+      success: function(object) {
+        $(".success").show();
+      },
+      error: function(model, error) {
+        $(".error").show();
+      }
+    });
+    
     document.body.addEventListener('touchstart', function(event) {
         console.log((new Date()).getTime());
     }, false);
 
-    document.body.addEventListener('touchstart', function(event) {
+    document.body.addEventListener('touchend', function(event) {
         console.log((new Date()).getTime());
     }, false);
 
