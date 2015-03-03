@@ -17,7 +17,7 @@ body{
 #input_message {
     margin-top: 5%;
     text-align: center;
-    font-size: 2em;
+    font-size: 2.5em;
     color: #fff;
 }
 
@@ -26,6 +26,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5%;
+    font-size: 2.5em;
     color: #fff;
 }
 
@@ -42,8 +43,8 @@ body{
 
 .number {
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 95%;
+    height: 30%;
     text-align:center;
     background-color : transparent;
     font-family: 'Helvetica', sans-serif;
