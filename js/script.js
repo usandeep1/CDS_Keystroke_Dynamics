@@ -1,5 +1,19 @@
 $(document).ready(function(){
 
+    document.body.addEventListener('touchstart', function(event) {
+        console.log((new Date()).getTime());
+    }, false);
+
+    document.body.addEventListener('touchstart', function(event) {
+        console.log((new Date()).getTime());
+    }, false);
+
+    document.body.addEventListener('click', function(event) {
+        console.log((new Date()).getTime());
+        console.log(event.touches[0].clientX);
+        console.log(event.touches[0].clientY);
+    }, false);
+
     var numSlotsFilled = 0;
 
     // FastClick code
