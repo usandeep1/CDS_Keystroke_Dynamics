@@ -43,15 +43,15 @@ $(document).ready(function(){
             
             // print a success message on completion
             $('#successMsg', context).text('Thanks!');
-            // $('#successMsg').text('Thanks!');
+
             var testusrObj = new TestUserObject();
             testusrObj.save({'click_start': (new Date()).getTime()}, {
-            success: function(object) {
-                console.log('successfully saved');
-            },
-            error: function(model, error) {
-                console.log('failed to save');
-            }
+                success: function(object) {
+                    console.log('successfully saved');
+                },
+                error: function(model, error) {
+                    console.log('failed to save');
+                }
             });
         }
     });
