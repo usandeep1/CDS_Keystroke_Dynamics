@@ -4,17 +4,15 @@ $(document).ready(function(){
     var TestUserObject = Parse.Object.extend("TestUserObject");
     
     document.body.addEventListener('touchstart', function(event) {
-        console.log((new Date()).getTime());
+        console.log('touchstart:' + (new Date()).getTime());
     }, false);
 
     document.body.addEventListener('touchend', function(event) {
-        console.log((new Date()).getTime());
+        console.log('touchend: ' + (new Date()).getTime());
     }, false);
 
     document.body.addEventListener('click', function(event) {
-        console.log((new Date()).getTime());
-        console.log(event.touches[0].clientX);
-        console.log(event.touches[0].clientY);
+        console.log('click: ' + (new Date()).getTime());
     }, false);
 
     var numSlotsFilled = 0;
@@ -29,7 +27,7 @@ $(document).ready(function(){
     // establish context for faster search
     var context = $('#passcode');
     
-    $('.number', context).click(function() {
+    $('.number', context).touchend(function() {
         // clear the success message if it is there
         $('#successMsg', context).text('');
         
@@ -59,7 +57,7 @@ $(document).ready(function(){
     });
 
     /// CODE FOR HANDLING BACKSPACE /// 
-    $('#backspace', context).click(function() {
+    $('#backspace', context).touchend(function() {
         // get the last slot that was filled in and clear it
         if (numSlotsFilled !== 0) {
             var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
