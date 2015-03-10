@@ -29,43 +29,43 @@ $(document).ready(function(){
 
     var numSlotsFilled = 0;
 
-    // FastClick code
+    /// FastClick CODE /// 
     $(function() {
         FastClick.attach(document.body);
     });
 
-    $('.number').click(function() {
-        // find the next empty slot and fill it with a circle
-        $('#successMsg').text('');
-        for (var i=1; i <= 4; i++){
-            var nextSlot = $('li:nth-of-type(' + i + ')');
-            if (nextSlot.text() !== 'O'){
-                nextSlot.text('O');
-                numSlotsFilled++;
-                break;
-            }
-        }
-        // clear the slots if the passcode is complete
+    /// CODE FOR FILLING IN SLOTS ///
+    
+    // establish context for faster search
+    var context = $('#passcode');
+    
+    $('.number', context).click(function() {
+        // clear the success message if it is there
+        $('#successMsg', context).text('');
+        
+        // fill in the next empty slot with a circle
+        var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
+        nextSlot.text('O');
+        numSlotsFilled++;
+        
+        // clear all the slots if the passcode is complete
         if (numSlotsFilled === 4){
-            for (var i=1; i <= 4; i++){
-                var nextSlot = $('li:nth-of-type(' + i + ')');
-                nextSlot.text('____');
-            }
+            $('#input_circles li').text('____');
             numSlotsFilled = 0;
+            
             // print a success message on completion
-            $('#successMsg').text('Thanks!');
+            $('#successMsg', context).text('Thanks!');
         }
     });
 
-    // code for handling backspace
-    $('#backspace').click(function() {
-        for (var i=1; i <= 4; i++){
-            var nextSlot = $('li:nth-last-of-type(' + i + ')');
-            if (nextSlot.text() === 'O'){
-                nextSlot.text('____');
-                numSlotsFilled--;
-                break;
-            }
+    /// CODE FOR HANDLING BACKSPACE /// 
+    
+    $('#backspace', context).click(function() {
+        // get the last slot that was filled in and clear it
+        if (numSlotsFilled !== 0) {
+            var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
+            lastSlot.text('____');
+            numSlotsFilled--;
         }
     });
 
