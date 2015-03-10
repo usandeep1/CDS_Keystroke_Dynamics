@@ -1,17 +1,7 @@
 $(document).ready(function(){
 
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
-    
-    var TestObject = Parse.Object.extend("TestObject");
-    var testObject = new TestObject();
-      testObject.save({foo: "bar"}, {
-      success: function(object) {
-        $(".success").show();
-      },
-      error: function(model, error) {
-        $(".error").show();
-      }
-    });
+    var TestUserObject = Parse.Object.extend("TestUserObject");
     
     document.body.addEventListener('touchstart', function(event) {
         console.log((new Date()).getTime());
@@ -55,6 +45,16 @@ $(document).ready(function(){
             
             // print a success message on completion
             $('#successMsg', context).text('Thanks!');
+            // $('#successMsg').text('Thanks!');
+            var testusrObj = new TestUserObject();
+            testusrObj.save({click_start: (new Date()).getTime()}, {
+            success: function(object) {
+                $(".success").show();
+            },
+            error: function(model, error) {
+                $(".error").show();
+            }
+            });
         }
     });
 
@@ -68,5 +68,6 @@ $(document).ready(function(){
             numSlotsFilled--;
         }
     });
+
 
 });
