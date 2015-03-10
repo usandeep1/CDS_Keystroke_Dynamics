@@ -22,6 +22,11 @@ $(document).ready(function(){
         FastClick.attach(document.body);
     });
 
+    /// CODE FOR PREVENTING SCROLLING
+    document.body.addEventListener('touchstart', function(e){ 
+        e.preventDefault(); 
+    });
+
     /// CODE FOR FILLING IN SLOTS ///
     
     // establish context for faster search
