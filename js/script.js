@@ -25,9 +25,9 @@ $(document).ready(function(){
     });
 
     /// CODE FOR PREVENTING SCROLLING
-    document.body.addEventListener('touchstart', function(e){ 
-        e.preventDefault(); 
-    });
+    // document.body.addEventListener('touchstart', function(e){ 
+    //     e.preventDefault(); 
+    // });
 
     /// CODE FOR FILLING IN SLOTS ///
     
