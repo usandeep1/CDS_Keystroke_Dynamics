@@ -27,7 +27,7 @@ $(document).ready(function(){
     // establish context for faster search
     var context = $('#passcode');
     
-    $('.number', context).touchend(function() {
+    $('.number', context).click(function() {
         // clear the success message if it is there
         $('#successMsg', context).text('');
         
@@ -57,7 +57,7 @@ $(document).ready(function(){
     });
 
     /// CODE FOR HANDLING BACKSPACE /// 
-    $('#backspace', context).touchend(function() {
+    $('#backspace', context).click(function() {
         // get the last slot that was filled in and clear it
         if (numSlotsFilled !== 0) {
             var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
