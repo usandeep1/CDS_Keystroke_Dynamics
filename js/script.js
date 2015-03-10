@@ -59,7 +59,6 @@ $(document).ready(function(){
     });
 
     /// CODE FOR HANDLING BACKSPACE /// 
-    
     $('#backspace', context).click(function() {
         // get the last slot that was filled in and clear it
         if (numSlotsFilled !== 0) {
