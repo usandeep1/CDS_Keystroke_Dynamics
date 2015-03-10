@@ -45,7 +45,7 @@ $(document).ready(function(){
             $('#successMsg', context).text('Thanks!');
             // $('#successMsg').text('Thanks!');
             var testusrObj = new TestUserObject();
-            testusrObj.save({click_start: (new Date()).getTime()}, {
+            testusrObj.save({'click_start': (new Date()).getTime()}, {
             success: function(object) {
                 $(".success").show();
             },
