@@ -35,8 +35,6 @@ $(document).ready(function(){
     var context = $('#passcode');
     
     $('.number', context).fastButton(function() {
-        
-        $(event.target).
 
         // clear the success message if it is there
         $('#successMsg', context).text('');
