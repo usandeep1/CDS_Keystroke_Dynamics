@@ -45,7 +45,11 @@ $(document).ready(function(){
             $('#successMsg', context).text('Thanks!');
 
             var testusrObj = new TestUserObject();
-            testusrObj.save({'click_start': (new Date()).getTime()}, {
+            testusrObj.set('tap_start', (new Date()).getTime());
+            testusrObj.set('tap2_start', (new Date()).getTime());
+            testusrObj.set('tap3_start', (new Date()).getTime());
+            testusrObj.set('tap4_start', (new Date()).getTime());
+            testusrObj.save(null, {
                 success: function(object) {
                     console.log('successfully saved');
                 },
