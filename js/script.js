@@ -47,10 +47,10 @@ $(document).ready(function(){
             var testusrObj = new TestUserObject();
             testusrObj.save({'click_start': (new Date()).getTime()}, {
             success: function(object) {
-                $(".success").show();
+                console.log('successfully saved');
             },
             error: function(model, error) {
-                $(".error").show();
+                console.log('failed to save');
             }
             });
         }
