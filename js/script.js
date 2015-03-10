@@ -3,6 +3,8 @@ $(document).ready(function(){
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     var TestUserObject = Parse.Object.extend("TestUserObject");
     
+    var tap_record = [];
+
     document.body.addEventListener('touchstart', function(event) {
         console.log('touchstart:' + (new Date()).getTime());
     }, false);
@@ -32,7 +34,10 @@ $(document).ready(function(){
     // establish context for faster search
     var context = $('#passcode');
     
-    $('.number', context).fastButton(function() {
+    $('.number', context).click(function() {
+        
+        $(event.target).
+
         // clear the success message if it is there
         $('#successMsg', context).text('');
         
@@ -50,7 +55,7 @@ $(document).ready(function(){
             $('#successMsg', context).text('Thanks!');
 
             var testusrObj = new TestUserObject();
-            testusrObj.set('tap_start', (new Date()).getTime());
+            testusrObj.set('tap1_start', (new Date()).getTime());
             testusrObj.set('tap2_start', (new Date()).getTime());
             testusrObj.set('tap3_start', (new Date()).getTime());
             testusrObj.set('tap4_start', (new Date()).getTime());
@@ -66,7 +71,7 @@ $(document).ready(function(){
     });
 
     /// CODE FOR HANDLING BACKSPACE /// 
-    $('#backspace', context).fastButton(function() {
+    $('#backspace', context).click(function() {
         // get the last slot that was filled in and clear it
         if (numSlotsFilled !== 0) {
             var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
