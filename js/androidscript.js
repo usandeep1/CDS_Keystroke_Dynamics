@@ -4,34 +4,35 @@ $(document).ready(function(){
     var Attempt = Parse.Object.extend("Attempt");
     
     var attempt = new Attempt();
-    attempt.set('start_times', [])
-    attempt.set('end_times', [])
-    attempt.set('start_x_coords', [])
-    attempt.set('start_y_coords', [])
+    attempt.set('start_times', []);
+    attempt.set('end_times', []);
+    attempt.set('start_x_coords', []);
+    attempt.set('start_y_coords', []);
     
-    function log_tap_start(evt,elem) 
+    function log_tap_start(evt) 
     {
     	console.log ( elem.attr ('id') );
     	console.log ( 'e.originalEvent.touches[0].pageX;: ' + evt.originalEvent.touches[0].pageX);
     	console.log ( 'e.originalEvent.pageX;: ' + evt.originalEvent.pageX;);
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
-  		attempt.add('start_times',(new Date()).getTime())
+  		attempt.add('start_times',(new Date()).getTime());
     }
 
     function log_tap_end(elem) 
     {
         console.log ('end');
-        attempt.add('end_times',(new Date()).getTime())
+        attempt.add('end_times',(new Date()).getTime());
     }
 
     var numSlotsFilled = 0;
 
     $('.number').bind('touchstart', function(evt) { 
-    	log_tap_start(evt,$(this)); 
+    	log_tap_start(evt); 
     });
+
     $('.number').bind('touchend', function(evt) { 
-    	log_tap_end(evt,$(this)); 
+    	log_tap_end(evt); 
     	$('#successMsg', context).text('');
     	// fill in the next empty slot with a circle
         var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
