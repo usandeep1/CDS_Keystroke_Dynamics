@@ -11,9 +11,8 @@ $(document).ready(function(){
     
     function log_tap_start(evt) 
     {
-    	console.log ( elem.attr ('id') );
-    	console.log ( 'pageX: ' + evt.originalEvent.pageX );
-    	console.log ( 'elem.offset().top: ' + elem.offset().top );
+    	console.log ( 'evt.originalEvent.pageX: ' + evt.originalEvent.pageX );
+    	console.log ( 'evt.originalEvent.touches[0].pageX: ' + evt.originalEvent.touches[0].pageX );
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
     }
