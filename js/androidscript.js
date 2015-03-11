@@ -8,7 +8,13 @@ $(document).ready(function(){
     attempt.set('end_times', []);
     attempt.set('start_x_coords', []);
     attempt.set('start_y_coords', []);
-    
+
+    var numSlotsFilled = 0;
+
+    $('.number').bind('touchstart', function(evt) { 
+    	log_tap_start(evt); 
+    });
+
     function log_tap_start(evt) 
     {
     	console.log ( elem.attr ('id') );
@@ -18,18 +24,6 @@ $(document).ready(function(){
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
   		attempt.add('start_times',(new Date()).getTime());
     }
-
-    function log_tap_end(elem) 
-    {
-        console.log ('end');
-        attempt.add('end_times',(new Date()).getTime());
-    }
-
-    var numSlotsFilled = 0;
-
-    $('.number').bind('touchstart', function(evt) { 
-    	log_tap_start(evt); 
-    });
 
     $('.number').bind('touchend', function(evt) { 
     	log_tap_end(evt); 
@@ -56,6 +50,12 @@ $(document).ready(function(){
             });
         }
     });
+
+    function log_tap_end(elem) 
+    {
+        console.log ('end');
+        attempt.add('end_times',(new Date()).getTime());
+    }
 
     /// CODE FOR HANDLING BACKSPACE /// 
     $('#backspace').bind('touchend', function() { 
