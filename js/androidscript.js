@@ -11,8 +11,8 @@ $(document).ready(function(){
     
     function log_tap_start(evt) 
     {
-    	console.log ( 'evt.originalEvent.target.position().top: ' + evt.originalEvent.target.position().top );
-    	console.log ( 'evt.originalEvent.target.position().left: ' + evt.originalEvent.target.position().left );
+    	console.log ( 'evt.originalEvent.target.position().top: ' + evt.originalEvent.target.offset() );
+    	// console.log ( 'evt.originalEvent.target.position().left: ' + evt.originalEvent.target.position().left );
     	console.log ( 'evt.originalEvent.touches[0].pageX: ' + evt.originalEvent.touches[0].pageX );   //maybe change 0 to length - 1 ?????
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
