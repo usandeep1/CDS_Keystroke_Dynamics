@@ -9,10 +9,14 @@ $(document).ready(function(){
     attempt.set('start_x_coords', [])
     attempt.set('start_y_coords', [])
 
-    $('.number').bind('touchstart', function(evt) { tap_start(evt) });
-    $('.number').bind('touchend', function(evt) { tap_end(evt) });
+    $('.number').bind('touchstart', function(evt) { 
+    	tap_start(evt) 
+    });
+    $('.number').bind('touchend', function(evt) { 
+    	tap_end(evt) 
+    });
     
-    function tap_start(event) 
+    function tap_start(evt) 
     {
     	console.log('start1');
         var x = evt.pageX - evt.target.offset().left;
