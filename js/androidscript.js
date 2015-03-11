@@ -18,13 +18,13 @@ $(document).ready(function(){
     
     function tap_start(elem) 
     {
-    	
-  		var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
-		var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
+    	alert ( elem.attr ('id') );
+  		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
+		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
 		// console.log('start2: ' = $x + ' , ' + $y );
   		// alert ( 'start: ' = $x + ' , ' + $y );
   		// console.log('start: ' = $x + ' , ' + $y );
-  		alert ( 'start: ' + x + ',' + y );
+  		// alert ( 'start: ' + x + ',' + y );
     }
 
     function tap_end(elem) 
