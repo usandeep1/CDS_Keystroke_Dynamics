@@ -9,14 +9,14 @@ $(document).ready(function(){
     attempt.set('start_x_coords', [])
     attempt.set('start_y_coords', [])
 
-    $('.number').bind('touchstart', function(event) { tap_start(event, $(this)) });
-    $('.number').bind('touchend', function(event) { tap_end(event, $(this)) });
+    $('.number').bind('touchstart', function(evt) { tap_start(evt) });
+    $('.number').bind('touchend', function(evt) { tap_end(evt) });
     
     function tap_start(event, elem) 
     {
-    	console.log('start1: ' = $x + ' , ' + $y );
-        var x = event.pageX - elem.offset().left;
-		var y = event.pageY - elem.offset().top;
+    	console.log('start1');
+        var x = evt.pageX - evt.target.offset().left;
+		var y = evt.pageY - evt.target.offset().top;
 		console.log('start2: ' = $x + ' , ' + $y );
         alert ( 'start: ' = $x + ' , ' + $y );
         console.log('start: ' = $x + ' , ' + $y );
