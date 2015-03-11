@@ -9,13 +9,13 @@ $(document).ready(function(){
     attempt.set('start_x_coords', [])
     attempt.set('start_y_coords', [])
 
-    document.getElementById("myBtn").addEventListener('touchstart', function(event) {
-        console.log('touchstart:' + (new Date()).getTime());
-    }, false);
+    // document.getElementById("myBtn").addEventListener('touchstart', function(event) {
+    //     console.log('touchstart:' + (new Date()).getTime());
+    // }, false);
 
-    document.getElementById("myBtn").addEventListener('touchend', function(event) {
-        console.log('touchend: ' + (new Date()).getTime());
-    }, false);
+    // document.getElementById("myBtn").addEventListener('touchend', function(event) {
+    //     console.log('touchend: ' + (new Date()).getTime());
+    // }, false);
 
     var numSlotsFilled = 0;
 
