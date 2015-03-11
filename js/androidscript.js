@@ -18,7 +18,7 @@ $(document).ready(function(){
     
     function tap_start(evt,elem) 
     {
-    	alert ( elem.attr ('id') );
+    	console.log ( elem.attr ('id') );
     	console.log ( evt.target.offset().top );
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
@@ -30,7 +30,7 @@ $(document).ready(function(){
 
     function tap_end(elem) 
     {
-        alert ('end');
+        console.log ('end');
     }
 
     var numSlotsFilled = 0;
