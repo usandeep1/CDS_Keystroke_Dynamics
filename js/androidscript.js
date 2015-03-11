@@ -17,6 +17,7 @@ $(document).ready(function(){
         var x = evt.pageX - elem.offset().left;
 		var y = evt.pageY - elem.offset().top;
         alert ( 'start: ' = $x + ' , ' + $y );
+        console.log('start: ' = $x + ' , ' + $y );
     }
 
     function tap_end(evt, elem) 
