@@ -17,7 +17,6 @@ $(document).ready(function(){
 
     function log_tap_start(evt) 
     {
-    	console.log ( elem.attr ('id') );
     	console.log ( 'e.originalEvent.touches[0].pageX;: ' + evt.originalEvent.touches[0].pageX);
     	console.log ( 'e.originalEvent.pageX;: ' + evt.originalEvent.pageX;);
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
