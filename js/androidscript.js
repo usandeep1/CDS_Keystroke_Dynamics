@@ -11,12 +11,13 @@ $(document).ready(function(){
 
     var numSlotsFilled = 0;
 
-    $('.number').bind('touchstart', function(evt) { 
-    	console.log ( 'e.originalEvent.touches[0].pageX;: ' + evt.originalEvent.touches[0].pageX);
-    	console.log ( 'e.originalEvent.pageX;: ' + evt.originalEvent.pageX;);
+    $('.number').bind('touchstart', function() {
+    	console.log('touch start'); 
+    	// console.log ( 'e.originalEvent.touches[0].pageX;: ' + evt.originalEvent.touches[0].pageX);
+    	// console.log ( 'e.originalEvent.pageX;: ' + evt.originalEvent.pageX;);
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
-  		attempt.add('start_times',(new Date()).getTime());
+  		// attempt.add('start_times',(new Date()).getTime());
     });
 
     function log_tap_start(evt) 
@@ -28,11 +29,11 @@ $(document).ready(function(){
   		attempt.add('start_times',(new Date()).getTime());
     }
 
-    $('.number').bind('touchend', function(evt) { 
+    $('.number').bind('touchend', function() { 
         console.log ('end');
-        attempt.add('end_times',(new Date()).getTime());
+        // attempt.add('end_times',(new Date()).getTime());
 
-  		
+
     	$('#successMsg', context).text('');
     	// fill in the next empty slot with a circle
         var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
