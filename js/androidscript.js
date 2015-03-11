@@ -20,7 +20,7 @@ $(document).ready(function(){
     {
     	console.log ( elem.attr ('id') );
     	console.log ( 'pageX: ' + evt.originalEvent.pageX );
-    	console.log ( elem.offset().top);
+    	console.log ( 'elem.offset().top: ' + elem.offset().top);
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
 		// console.log('start2: ' = $x + ' , ' + $y );
