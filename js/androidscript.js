@@ -12,7 +12,7 @@ $(document).ready(function(){
     $('.number').bind('touchstart', function(evt) { tap_start(evt) });
     $('.number').bind('touchend', function(evt) { tap_end(evt) });
     
-    function tap_start(event, elem) 
+    function tap_start(event) 
     {
     	console.log('start1');
         var x = evt.pageX - evt.target.offset().left;
