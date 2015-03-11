@@ -9,16 +9,17 @@ $(document).ready(function(){
     attempt.set('start_x_coords', [])
     attempt.set('start_y_coords', [])
 
-    $('.number').bind('touchstart', function() { 
-    	tap_start($(this)) 
+    $('.number').bind('touchstart', function(evt) { 
+    	tap_start(evt,$(this)) 
     });
-    $('.number').bind('touchend', function() { 
-    	tap_end($(this)) 
+    $('.number').bind('touchend', function(evt) { 
+    	tap_end(evt,$(this)) 
     });
     
-    function tap_start(elem) 
+    function tap_start(evt,elem) 
     {
     	alert ( elem.attr ('id') );
+    	alert ( evt.target );
   		// var x = elem.offset().left; //evt.pageX - evt.target.offset().left;
 		// var y = elem.offset().top;  //evt.pageY - evt.target.offset().top;
 		// console.log('start2: ' = $x + ' , ' + $y );
