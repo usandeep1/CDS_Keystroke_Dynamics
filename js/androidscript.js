@@ -9,17 +9,19 @@ $(document).ready(function(){
     attempt.set('start_x_coords', [])
     attempt.set('start_y_coords', [])
 
-    $('.number').bind('touchstart', function() { tap_start($(this)) });
-    $('.number').bind('touchend', function() { tap_end($(this)) });
+    $('.number').bind('touchstart', function(evt) { tap_start(evt, $(this)) });
+    $('.number').bind('touchend', function(evt) { tap_end(evt, $(this)) });
     
-    function tap_start(elem) 
+    function tap_start(evt, elem) 
     {
-        alert ( elem.attr ("id" ) );
+        var x = evt.pageX - elem.offset().left
+		var y = evt.pageY - elem.offset().top
+        alert ( 'start: ' = $x + ' , ' + $y );
     }
 
-    function tap_start(elem) 
+    function tap_end(evt, elem) 
     {
-        alert ( elem.attr ("id" ) );
+        alert ('end');
     }
 
     var numSlotsFilled = 0;
