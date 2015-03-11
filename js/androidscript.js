@@ -18,7 +18,7 @@ $(document).ready(function(){
     
     function tap_start(elem) 
     {
-    	console.log('start1');
+    	alert ( elem.attr ("id" ) );
   		// var x = evt.pageX - evt.target.offset().left;
 		// var y = evt.pageY - evt.target.offset().top;
 		// console.log('start2: ' = $x + ' , ' + $y );
