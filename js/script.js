@@ -26,8 +26,8 @@ $(document).ready(function(){
     // establish context for faster search
     var context = $('#passcode');
     
-    $('.number', context).click(function() {      //Change to fastButton
-
+    // $('.number', context).click(function() {      //Change to fastButton
+    $(".number").on("tap",function(){      //Change to fastButton
         // clear the success message if it is there
         $('#successMsg', context).text('');
         
