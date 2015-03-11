@@ -16,17 +16,17 @@ $(document).ready(function(){
     	tap_end($(this)) 
     });
     
-    function tap_start(evt) 
+    function tap_start(elem) 
     {
     	console.log('start1');
-  //       var x = evt.pageX - evt.target.offset().left;
+  		// var x = evt.pageX - evt.target.offset().left;
 		// var y = evt.pageY - evt.target.offset().top;
 		// console.log('start2: ' = $x + ' , ' + $y );
-  //       alert ( 'start: ' = $x + ' , ' + $y );
-  //       console.log('start: ' = $x + ' , ' + $y );
+  		// alert ( 'start: ' = $x + ' , ' + $y );
+  		// console.log('start: ' = $x + ' , ' + $y );
     }
 
-    function tap_end(evt, elem) 
+    function tap_end(elem) 
     {
         alert ('end');
     }
