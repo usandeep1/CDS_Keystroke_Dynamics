@@ -1,20 +1,20 @@
 $(document).ready(function(){
 
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
-    var TestUserObject = Parse.Object.extend("TestUserObject");
+    var Attempt = Parse.Object.extend("Attempt");
     
-    var usrObj = new TestUserObject();
+    var attempt = new Attempt();
+    attempt.set('start_times', [])
+    attempt.set('end_times', [])
+    attempt.set('start_x_coords', [])
+    attempt.set('start_y_coords', [])
 
-    document.body.addEventListener('touchstart', function(event) {
+    document.getElementById("myBtn").addEventListener('touchstart', function(event) {
         console.log('touchstart:' + (new Date()).getTime());
     }, false);
 
-    document.body.addEventListener('touchend', function(event) {
+    document.getElementById("myBtn").addEventListener('touchend', function(event) {
         console.log('touchend: ' + (new Date()).getTime());
-    }, false);
-
-    document.body.addEventListener('click', function(event) {
-        console.log('click: ' + (new Date()).getTime());
     }, false);
 
     var numSlotsFilled = 0;
@@ -34,7 +34,7 @@ $(document).ready(function(){
     // establish context for faster search
     var context = $('#passcode');
     
-    $('.number', context).click(function() {
+    $('.number', context).click(function() {      //Change to fastButton
 
         // clear the success message if it is there
         $('#successMsg', context).text('');
@@ -51,19 +51,19 @@ $(document).ready(function(){
             
             // print a success message on completion
             $('#successMsg', context).text('Thanks!');
-            usrObj.save(null, {
+            attempt.save(null, {
                 success: function(object) {
-                    console.log('successfully saved');
+                    console.log('attempt successfully saved');
                 },
                 error: function(model, error) {
-                    console.log('failed to save');
+                    console.log('attempt failed to save');
                 }
             });
         }
     });
 
     /// CODE FOR HANDLING BACKSPACE /// 
-    $('#backspace', context).click(function() {
+    $('#backspace', context).click(function() {            //Change to fastButton
         // get the last slot that was filled in and clear it
         if (numSlotsFilled !== 0) {
             var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
