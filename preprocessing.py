@@ -4,7 +4,7 @@ class User:
     def __init__(self, id, password, trials=None):
         self.id = id
         self.password = password
-        if trials=None:
+        if trials==None:
             trials = []
         self.trials = trials
 
@@ -20,10 +20,12 @@ class Trial:
         self.accel_y = kwargs['accel_y']
         self.accel_z = kwargs['accel_z']
         self.loc_x = kwargs['loc_x']
-        self.loc_y = kwargs['loc_z']
+        self.loc_y = kwargs['loc_y']
 
 def read_data(filename):
-    datatable = json.load(filename)
+    datatable = {}
+    with open(filename) as f:
+        datatable = json.load(f)
 
     users = []
     for id, attr in datatable.iteritems():
@@ -31,6 +33,6 @@ def read_data(filename):
         raw_trials = attr['trials']
         trials = [Trial(**t) for t in raw_trials]
             
-        u = User(id, password, trials)
+        users.append(User(id, password, trials))
 
     return users
