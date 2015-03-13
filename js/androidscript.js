@@ -11,19 +11,9 @@ $(document).ready(function(){
     
     function log_tap_start(evt) 
     {
-        docRect = document.body.getBoundingClientRect()
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
-    	//console.log ( 'evt.originalEvent.target.id: ' + evt.originalEvent.target.id );
-        //console.log ('$(this).offset().top: ' + $("button").position());
-    	// console.log ( 'evt.originalEvent.target.position().left: ' + evt.originalEvent.target.position().left );
-        console.log ('keyRect.top' + keyRect.top);
-        console.log ('keyRect.left' + keyRect.left);
-        console.log ('docRect.top' + docRect.top);
-        console.log ('docRect.left' + docRect.left);
-    	console.log ( 'evt.originalEvent.touches[0].pageX: ' + evt.originalEvent.touches[0].pageX );   //maybe change 0 to length - 1 ?????
-        console.log ( 'evt.originalEvent.touches[0].pageY: ' + evt.originalEvent.touches[0].pageY );   //maybe change 0 to length - 1 ?????
-  		// var x = elem.offset().left; //evt.originalEvent.pageX - evt.target.offset().left;
-		// var y = elem.offset().top;  //evt.originalEvent.pageY - evt.target.offset().top;
+    	console.log ( 'Relative_X: ' + evt.originalEvent.touches[0].pageX - keyRect.left);   //maybe change 0 to length - 1 ?????
+        console.log ( 'Relative_Y: ' + evt.originalEvent.touches[0].pageY - keyRect.top );   //maybe change 0 to length - 1 ?????
     }
 
     function log_tap_end(evt) 
