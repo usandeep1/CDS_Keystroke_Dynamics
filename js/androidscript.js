@@ -12,13 +12,15 @@ $(document).ready(function(){
     function log_tap_start(evt) 
     {
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
-    	console.log ( 'Relative_X: ' + evt.originalEvent.touches[0].pageX - keyRect.left);   //maybe change 0 to length - 1 ?????
-        console.log ( 'Relative_Y: ' + evt.originalEvent.touches[0].pageY - keyRect.top );   //maybe change 0 to length - 1 ?????
+    	console.log ( 'Relative_X @ beginning: ' + evt.originalEvent.touches[0].pageX - keyRect.left);   //maybe change 0 to length - 1 ?????
+        console.log ( 'Relative_Y @ beginning: ' + evt.originalEvent.touches[0].pageY - keyRect.top );   //maybe change 0 to length - 1 ?????
     }
 
     function log_tap_end(evt) 
     {
-        console.log ('end');
+        keyRect = evt.originalEvent.target.getBoundingClientRect(),
+        console.log ( 'Relative_X @ end: ' + evt.originalEvent.touches[0].pageX - keyRect.left);   //maybe change 0 to length - 1 ?????
+        console.log ( 'Relative_Y @ end: ' + evt.originalEvent.touches[0].pageY - keyRect.top );   //maybe change 0 to length - 1 ?????
     }
 
     var numSlotsFilled = 0;
