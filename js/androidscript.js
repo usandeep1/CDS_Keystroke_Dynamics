@@ -11,8 +11,8 @@ $(document).ready(function(){
     
     function log_tap_start(evt) 
     {
-        var docRect = document.body.getBoundingClientRect()
-        var keyRect = evt.originalEvent.target.getBoundingClientRect(),
+        docRect = document.body.getBoundingClientRect()
+        keyRect = evt.originalEvent.target.getBoundingClientRect(),
     	//console.log ( 'evt.originalEvent.target.id: ' + evt.originalEvent.target.id );
         //console.log ('$(this).offset().top: ' + $("button").position());
     	// console.log ( 'evt.originalEvent.target.position().left: ' + evt.originalEvent.target.position().left );
