@@ -11,16 +11,15 @@ $(document).ready(function(){
     
     function log_tap_start(evt) 
     {
+        console.log ( 'start_time: ' + (new Date()).getTime())
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
-    	console.log ( 'Relative_X @ beginning: ' + String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
-        console.log ( 'Relative_Y @ beginning: ' + String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
+    	console.log ( 'Relative_X: ' + String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
+        console.log ( 'Relative_Y: ' + String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
     }
 
     function log_tap_end(evt) 
     {
-        keyRect = evt.originalEvent.target.getBoundingClientRect(),
-        console.log ( 'Relative_X @ end: ' + String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
-        console.log ( 'Relative_Y @ end: ' + String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
+        console.log ( 'end_time: ' + (new Date()).getTime())
     }
 
     var numSlotsFilled = 0;
