@@ -19,7 +19,7 @@ $(document).ready(function(){
             alert("Error: " + error.code + " " + error.message);
           }
         });
-    }
+    });
 
     $("#login_user_btn").on("click",function(){
     // function login_user(form) { 
@@ -33,5 +33,5 @@ $(document).ready(function(){
             alert("Error: " + error.code + " " + error.message);
           }
         });
-    }
+    });
 });
