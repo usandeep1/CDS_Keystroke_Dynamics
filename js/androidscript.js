@@ -3,6 +3,10 @@ $(document).ready(function(){
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     var Attempt = Parse.Object.extend("Attempt");
 
+    var accelx = 0;
+    var accely = 0;
+    var accelz = 0;
+
     window.ondevicemotion = function(event) {
         var accelx = event.accelerationIncludingGravity.x;
         var accely = event.accelerationIncludingGravity.y;
