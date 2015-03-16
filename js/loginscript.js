@@ -3,7 +3,7 @@ $(document).ready(function(){
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     $("#container").css("overflow-x:hidden; overflow-y:scroll;");
     
-    $("#register_user_btn").on("click",function(){
+    $("#register_user_btn").on("click",function(event){
     // function register_new_user(form) { 
         var form = event.originalEvent.target.form; 
         console.log ('register_user_btn function');
@@ -21,7 +21,7 @@ $(document).ready(function(){
         });
     });
 
-    $("#login_user_btn").on("click",function(){
+    $("#login_user_btn").on("click",function(event){
     // function login_user(form) { 
         var form = event.originalEvent.target.form; 
         console.log ('login_user_btn function');
