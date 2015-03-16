@@ -13,15 +13,15 @@
     </head>
 
 </body>
-    <body>
+    <body id = "container">
         <h1 align = "center">Create Account</h1>
-	<form tag="Create Login">
-		<div align="center">
-	       <input type="username" name="username" placeholder = "Username"/><br/><br/>
-	       <input type="password" name="pwd" placeholder = "Password"/><br/><br/>
-	       <input type="submit" value="Register" /><br/><br/><br/><br/>
-		</div>
-	</form>
+        <form tag="Create Login">
+		   <div align="center">
+	           <input type="username" name="username" placeholder = "Username"/><br/><br/>
+	           <input type="password" name="pwd" placeholder = "Password"/><br/><br/>
+	           <input type="submit" value="Register" /><br/><br/><br/><br/>
+		   </div>
+	    </form>
         
         <h1 align = "center">User Login</h1>
         <form name="login">
@@ -31,16 +31,5 @@
                 <input type="button" onclick="check(this.form)" value="Login"/>
             </div>
         </form>
-        <script language="javascript">
-            function check(form) { /*function to check userid & password*/
-                /*the following code checks whether the entered userid and password are matching*/
-                if(form.userid.value == "myuserid" && form.pswrd.value == "mypswrd") {
-                    window.open('www.usandeep1.github.io')/*opens the target page while Id & password matches*/
-                }
-                else {
-                    alert("Error Password or Username")/*displays error message*/
-                }
-            }
-        </script>
     </body>
 </html>
