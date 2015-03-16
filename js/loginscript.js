@@ -3,9 +3,10 @@ $(document).ready(function(){
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     $("#container").css("overflow-x:hidden; overflow-y:scroll;");
     
-    $("#register_user_btn").on("click",function(){
+    $("#register_user_btn").on("tap",function(){
     // function register_new_user(form) { 
         var form = event.originalEvent.target.form; 
+        console.log ('register_user_btn function');
         var user = new Parse.User();
         user.set("username", form.username.value);
         user.set("password", form.pwd.value);
@@ -20,9 +21,10 @@ $(document).ready(function(){
         });
     }
 
-    $("#register_user_btn").on("click",function(){
+    $("#login_user_btn").on("tap",function(){
     // function login_user(form) { 
         var form = event.originalEvent.target.form; 
+        console.log ('login_user_btn function');
         Parse.User.logIn(form.userid.value, form.pswrd.value, {
           success: function(user) {
             window.open('www.usandeep1.github.io/index.html')
