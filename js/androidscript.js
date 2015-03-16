@@ -28,7 +28,30 @@ $(document).ready(function(){
     	log_tap_start(evt); 
     });
     $('.number').bind('touchend', function(evt) { 
-    	log_tap_end(evt); 
+    	log_tap_end(evt);
+        $('#successMsg', context).text('');
+        
+        // fill in the next empty slot with a circle
+        var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
+        nextSlot.text('O');
+        numSlotsFilled++;
+        
+        // clear all the slots if the passcode is complete
+        if (numSlotsFilled === 4){
+            $('#input_circles li').text('____');
+            numSlotsFilled = 0;
+            
+            // print a success message on completion
+            $('#successMsg', context).text('Thanks!');
+            // attempt.save(null, {
+            //     success: function(object) {
+            //         console.log('attempt successfully saved');
+            //     },
+            //     error: function(model, error) {
+            //         console.log('attempt failed to save');
+            //     }
+            // });
+        } 
     });
 
     /// FastClick CODE /// 
@@ -49,40 +72,40 @@ $(document).ready(function(){
     // $('.number', context).click(function() {      //Change to fastButton
 
     //     // clear the success message if it is there
-    //     $('#successMsg', context).text('');
+        // $('#successMsg', context).text('');
         
-    //     // fill in the next empty slot with a circle
-    //     var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
-    //     nextSlot.text('O');
-    //     numSlotsFilled++;
+        // // fill in the next empty slot with a circle
+        // var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
+        // nextSlot.text('O');
+        // numSlotsFilled++;
         
-    //     // clear all the slots if the passcode is complete
-    //     if (numSlotsFilled === 4){
-    //         $('#input_circles li').text('____');
-    //         numSlotsFilled = 0;
+        // // clear all the slots if the passcode is complete
+        // if (numSlotsFilled === 4){
+        //     $('#input_circles li').text('____');
+        //     numSlotsFilled = 0;
             
-    //         // print a success message on completion
-    //         $('#successMsg', context).text('Thanks!');
-    //         attempt.save(null, {
-    //             success: function(object) {
-    //                 console.log('attempt successfully saved');
-    //             },
-    //             error: function(model, error) {
-    //                 console.log('attempt failed to save');
-    //             }
-    //         });
-    //     }
+        //     // print a success message on completion
+        //     $('#successMsg', context).text('Thanks!');
+        //     attempt.save(null, {
+        //         success: function(object) {
+        //             console.log('attempt successfully saved');
+        //         },
+        //         error: function(model, error) {
+        //             console.log('attempt failed to save');
+        //         }
+        //     });
+        // }
     // });
 
-    // /// CODE FOR HANDLING BACKSPACE /// 
-    // $('#backspace', context).click(function() {            //Change to fastButton
-    //     // get the last slot that was filled in and clear it
-    //     if (numSlotsFilled !== 0) {
-    //         var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
-    //         lastSlot.text('____');
-    //         numSlotsFilled--;
-    //     }
-    // });
+    /// CODE FOR HANDLING BACKSPACE /// 
+    $('#backspace').bind('touchend', function(evt) { 
+        // get the last slot that was filled in and clear it
+        if (numSlotsFilled !== 0) {
+            var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
+            lastSlot.text('____');
+            numSlotsFilled--;
+        }
+    });
 
 
 });
