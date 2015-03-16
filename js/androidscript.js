@@ -7,6 +7,9 @@ $(document).ready(function(){
         console.log ('accelerationIncludingGravity.x: ' + event.accelerationIncludingGravity.x)
         console.log ('accelerationIncludingGravity.y: ' + event.accelerationIncludingGravity.y)
         console.log ('accelerationIncludingGravity.z: ' + event.accelerationIncludingGravity.z)
+        console.log ('alpha: ' + event.alpha)
+        console.log ('beta: ' + event.beta)
+        console.log ('gamma: ' + event.gamma)
     }
 
     var attempt = new Attempt();
