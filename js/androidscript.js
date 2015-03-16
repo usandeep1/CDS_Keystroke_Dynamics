@@ -2,15 +2,6 @@ $(document).ready(function(){
 
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     var Attempt = Parse.Object.extend("Attempt");
-    
-    window.ondevicemotion = function(event) {
-        console.log ('accelerationIncludingGravity.x: ' + event.accelerationIncludingGravity.x)
-        console.log ('accelerationIncludingGravity.y: ' + event.accelerationIncludingGravity.y)
-        console.log ('accelerationIncludingGravity.z: ' + event.accelerationIncludingGravity.z)
-        console.log ('alpha: ' + event.alpha)
-        console.log ('beta: ' + event.beta)
-        console.log ('gamma: ' + event.gamma)
-    }
 
     var attempt = new Attempt();
     attempt.set('start_times', [])
@@ -24,6 +15,14 @@ $(document).ready(function(){
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
     	console.log ( 'Relative_X: ' + String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
         console.log ( 'Relative_Y: ' + String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
+        window.ondevicemotion = function(event) {
+            console.log ('accelerationIncludingGravity.x: ' + event.accelerationIncludingGravity.x)
+            console.log ('accelerationIncludingGravity.y: ' + event.accelerationIncludingGravity.y)
+            console.log ('accelerationIncludingGravity.z: ' + event.accelerationIncludingGravity.z)
+            console.log ('alpha: ' + event.alpha)
+            console.log ('beta: ' + event.beta)
+            console.log ('gamma: ' + event.gamma)
+        }
     }
 
     function log_tap_end(evt) 
