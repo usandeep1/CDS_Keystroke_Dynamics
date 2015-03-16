@@ -12,7 +12,7 @@ $(document).ready(function(){
          
         user.signUp(null, {
           success: function(user) {
-            window.open('index.html')
+            window.open('index.html',"_top")
           },
           error: function(user, error) {
             alert("Error: " + error.code + " " + error.message);
@@ -25,7 +25,7 @@ $(document).ready(function(){
         console.log ('login_user_btn function');
         Parse.User.logIn(form.userid.value, form.pswrd.value, {
           success: function(user) {
-            window.open('index.html')
+            window.open('index.html',"_top")
           },
           error: function(user, error) {
             alert("Error: " + error.code + " " + error.message);

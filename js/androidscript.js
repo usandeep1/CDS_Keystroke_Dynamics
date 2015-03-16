@@ -9,6 +9,9 @@ $(document).ready(function(){
 
     var currentUser = Parse.User.current();
     console.log ('currentUser.username: ' + currentUser.get('username'));
+    var rand_pass = 1000+Math.round(Math.floor()*9000)
+    var pass_arr = (rand_pass + '').split('');
+    console.log(pass_arr);
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
@@ -19,8 +22,13 @@ $(document).ready(function(){
     var attempt = new Attempt();
     attempt.set('start_times', [])
     attempt.set('end_times', [])
-    attempt.set('start_x_coords', [])
-    attempt.set('start_y_coords', [])
+    attempt.set('x_coords', [])
+    attempt.set('y_coords', [])
+    attempt.set('accel_x', [])
+    attempt.set('accel_y', [])
+    attempt.set('accel_z', [])
+    attempt.set('buttons_pressed', [])
+    attempt.set('associated_password', 0)
     
     function log_tap_start(evt) 
     {
