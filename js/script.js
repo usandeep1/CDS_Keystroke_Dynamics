@@ -26,8 +26,8 @@ $(document).ready(function(){
     // establish context for faster search
     var context = $('#passcode');
     
-    // $('.number', context).click(function() {      //Change to fastButton
-    $(".number").on("tap",function(){      //Change to fastButton
+    $('.number', context).fastButton(function() {      //Change to fastButton
+    // $(".number").on("tap",function(){      //Change to fastButton
         // clear the success message if it is there
         $('#successMsg', context).text('');
         
@@ -55,7 +55,7 @@ $(document).ready(function(){
     });
 
     /// CODE FOR HANDLING BACKSPACE /// 
-    $('#backspace', context).click(function() {            //Change to fastButton
+    $('#backspace', context).fastButton(function() {            //Change to fastButton
         // get the last slot that was filled in and clear it
         if (numSlotsFilled !== 0) {
             var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
