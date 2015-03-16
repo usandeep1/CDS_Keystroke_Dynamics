@@ -8,6 +8,9 @@ $(document).ready(function(){
     var accelz = 0;
     var username = 'testSandeep';
 
+    var currentUser = Parse.User.current();
+    console.log ('currentUser.username: ' + currentUser.username)
+
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
         accely = event.accelerationIncludingGravity.y;
