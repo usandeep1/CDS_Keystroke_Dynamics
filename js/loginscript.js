@@ -4,7 +4,6 @@ $(document).ready(function(){
     $("#container").css("overflow-x:hidden; overflow-y:scroll;");
     
     $("#register_user_btn").on("click",function(event){
-    // function register_new_user(form) { 
         var form = event.originalEvent.target.form; 
         console.log ('register_user_btn function');
         var user = new Parse.User();
@@ -22,7 +21,6 @@ $(document).ready(function(){
     });
 
     $("#login_user_btn").on("click",function(event){
-    // function login_user(form) { 
         var form = event.originalEvent.target.form; 
         console.log ('login_user_btn function');
         Parse.User.logIn(form.userid.value, form.pswrd.value, {
