@@ -8,6 +8,10 @@ $(document).ready(function(){
     var accelz = 0;
 
     var currentUser = Parse.User.current();
+    if (currentUser === undefined){
+        window.open("login.html","_top");
+    }
+
     console.log ('currentUser.username: ' + currentUser.get('username'));
     var rand_pass = Math.floor(Math.random()*8999+1000);
     var pass_arr = (rand_pass + '').split('');
