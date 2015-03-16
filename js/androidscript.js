@@ -6,6 +6,7 @@ $(document).ready(function(){
     var accelx = 0;
     var accely = 0;
     var accelz = 0;
+    var username = 'testSandeep';
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
