@@ -8,9 +8,9 @@ $(document).ready(function(){
     var accelz = 0;
 
     window.ondevicemotion = function(event) {
-        var accelx = event.accelerationIncludingGravity.x;
-        var accely = event.accelerationIncludingGravity.y;
-        var accelz = event.accelerationIncludingGravity.z;
+        accelx = event.accelerationIncludingGravity.x;
+        accely = event.accelerationIncludingGravity.y;
+        accelz = event.accelerationIncludingGravity.z;
     }
 
     var attempt = new Attempt();
