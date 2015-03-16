@@ -9,7 +9,7 @@ $(document).ready(function(){
 
     var currentUser = Parse.User.current();
     console.log ('currentUser.username: ' + currentUser.get('username'));
-    var rand_pass = 1000+Math.round(Math.floor()*9000)
+    var rand_pass = Math.floor(Math.random()*8999+1000);
     var pass_arr = (rand_pass + '').split('');
     console.log(pass_arr);
 
