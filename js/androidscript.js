@@ -23,7 +23,8 @@ $(document).ready(function(){
     }
 
     var numSlotsFilled = 0;
-
+    var context = $('#passcode');
+    
     $('.number').bind('touchstart', function(evt) { 
     	log_tap_start(evt); 
     });
