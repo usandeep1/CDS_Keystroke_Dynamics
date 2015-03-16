@@ -9,7 +9,8 @@ $(document).ready(function(){
         var user = new Parse.User();
         user.set("username", form.username.value);
         user.set("password", form.pwd.value);
-         
+        user.set("attempts_recorded", 0);
+
         user.signUp(null, {
           success: function(user) {
             window.open('index.html',"_top")
