@@ -56,7 +56,8 @@ $(document).ready(function(){
     var context = $('#passcode');
 
     $('.number').bind('touchstart', function(evt) { 
-    	log_tap_start(evt); 
+    	evt.originalEvent.target.style.backgroundColor = #E0FFFF;
+        log_tap_start(evt); 
     });
 
     $('.number').bind('touchend', function(evt) { 
@@ -94,7 +95,8 @@ $(document).ready(function(){
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
-        } 
+        }
+        evt.originalEvent.target.style.backgroundColor = transparent; 
     });
 
     $('#backspace').bind('touchstart', function(evt) {
