@@ -14,6 +14,9 @@ $(document).ready(function(){
         var pass_arr = (rand_pass + '').split('');
         console.log('pass_arr: ' + pass_arr);
         user.set('associated_password', pass_arr);
+        var ratio = window.devicePixelRatio || 1;
+        user.set('screen_width',screen.width * ratio);
+        user.set('screen_height',screen.height * ratio);
         user.signUp(null, {
           success: function(user) {
             window.open('index.html',"_top")

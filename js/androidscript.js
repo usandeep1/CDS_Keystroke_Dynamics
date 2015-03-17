@@ -12,6 +12,14 @@ $(document).ready( function() {
         window.open("login.html","_top");
     }
 
+    var ratio = window.devicePixelRatio || 1;
+    var screen_width = screen.width * ratio;
+    var screen_height = screen.height * ratio;
+    if ((currentUser.get('screen_width') != screen_width) || (currentUser.get('screen_height') != screen_height)){
+        alert('The screen size of this device does not match the screen size of the device this account was created on.');
+        window.open("login.html","_top");
+    }
+
     console.log ("currentUser.get('username'): " + currentUser.get('username'));
     var pass_arr = currentUser.get('associated_password');
     $('#passcode_message').text('Enter passcode: ' + pass_arr);
@@ -23,16 +31,16 @@ $(document).ready( function() {
     }
 
     var attempt = new Attempt();
-    attempt.set('start_times', [])
-    attempt.set('end_times', [])
-    attempt.set('x_coords', [])
-    attempt.set('y_coords', [])
-    attempt.set('accel_x', [])
-    attempt.set('accel_y', [])
-    attempt.set('accel_z', [])
-    attempt.set('buttons_pressed', [])
-    attempt.set('associated_password', pass_arr)
-    attempt.set('user', currentUser.get('username'))
+    attempt.set('start_times', []);
+    attempt.set('end_times', []);
+    attempt.set('x_coords', []);
+    attempt.set('y_coords', []);
+    attempt.set('accel_x', []);
+    attempt.set('accel_y', []);
+    attempt.set('accel_z', []);
+    attempt.set('buttons_pressed', []);
+    attempt.set('associated_password', pass_arr);
+    attempt.set('user', currentUser.get('username'));
     
     function log_tap_start(evt) 
     {
