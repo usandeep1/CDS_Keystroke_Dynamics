@@ -58,6 +58,7 @@ if __name__=="__main__":
 
         print "Test Classifier..."
         accuracy = classifier.score(test_x, test_y)
+        # Incorporate False Acceptance Rate and False Rejection Rate
         print accuracy
         overall_accuracy += accuracy * len(test_y)
         total += len(test_y)
