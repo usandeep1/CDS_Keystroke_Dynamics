@@ -10,7 +10,10 @@ $(document).ready(function(){
         user.set("username", form.username.value);
         user.set("password", form.pwd.value);
         user.set("attempts_recorded", 0);
-
+        var rand_pass = Math.floor(Math.random()*8999+1000);
+        var pass_arr = (rand_pass + '').split('');
+        console.log('pass_arr: ' + pass_arr);
+        user.set('associated_password', pass_arr);
         user.signUp(null, {
           success: function(user) {
             window.open('index.html',"_top")

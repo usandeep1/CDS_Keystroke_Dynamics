@@ -13,9 +13,11 @@ $(document).ready(function(){
     }
 
     console.log ('currentUser.username: ' + currentUser.get('username'));
-    var rand_pass = Math.floor(Math.random()*8999+1000);
-    var pass_arr = (rand_pass + '').split('');
-    console.log('pass_arr: ' + pass_arr);
+    var pass_arr = currentUser.get('associated_password');
+    var passwrd = pass_arr.map(function (x) { 
+        return parseInt(x, 10); 
+    });
+    $('#passcode_message', context).text('Enter this passcode: ' + String(passwrd));
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
