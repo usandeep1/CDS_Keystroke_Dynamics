@@ -15,7 +15,7 @@ $(document).ready(function(){
     console.log ('currentUser.username: ' + currentUser.get('username'));
     var rand_pass = Math.floor(Math.random()*8999+1000);
     var pass_arr = (rand_pass + '').split('');
-    console.log('pass_arr' + pass_arr);
+    console.log('pass_arr: ' + pass_arr);
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
@@ -44,7 +44,7 @@ $(document).ready(function(){
         attempt.add('accel_x', accelx );
         attempt.add('accel_y', accely );
         attempt.add('accel_z', accelz );
-        attempt.add('buttons_pressed', evt.originalEvent.target.attr("id"));
+        attempt.add('buttons_pressed', evt.originalEvent.target.id);
     }
 
     function log_tap_end(evt) 
