@@ -13,12 +13,12 @@ $(document).ready(function(){
     }
 
     console.log ('currentUser.username: ' + currentUser.get('username'));
-    var pass_arr = currentUser.get('associated_password');
-    console.log ('pass_arr: ' + pass_arr);
-    var passwrd = pass_arr.map(function (x) { 
-        return parseInt(x, 10); 
-    });
-    $('#passcode_message', context).text('Enter this passcode: ' + String(passwrd));
+    // var pass_arr = currentUser.get('associated_password');
+    // console.log ('pass_arr: ' + pass_arr);
+    // var passwrd = pass_arr.map(function (x) { 
+    //     return parseInt(x, 10); 
+    // });
+    // $('#passcode_message', context).text('Enter this passcode: ' + String(passwrd));
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
