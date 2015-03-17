@@ -16,6 +16,7 @@ $(document).ready( function() {
     var rand_pass = Math.floor(Math.random()*8999+1000);
     var pass_arr = (rand_pass + '').split('');
     console.log('pass_arr: ' + pass_arr);
+    $('#passcode_message').text('Hey there');
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
