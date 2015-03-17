@@ -93,14 +93,14 @@ $(document).ready(function(){
                     attempt.set('associated_password', pass_arr);
                     attempt.set('user', currentUser.get('username'));
                     currentUser.increment('attempts_recorded');
-                    currentUser.save(null, {
-                        success: function(object) {
-                            console.log ('attempts_recorded incremented');
-                        }
-                        error: function(model, error) {
-                            console.log ('attempts_recorded failed to increment');
-                        }
-                    });
+                    // currentUser.save(null, {
+                    //     success: function(object) {
+                    //         console.log ('attempts_recorded incremented');
+                    //     }
+                    //     error: function(model, error) {
+                    //         console.log ('attempts_recorded failed to increment');
+                    //     }
+                    // });
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
