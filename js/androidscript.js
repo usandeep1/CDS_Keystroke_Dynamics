@@ -12,13 +12,10 @@ $(document).ready( function() {
         window.open("login.html","_top");
     }
 
-    console.log('currentUser.username: ' + currentUser.get('username'));
-    // var pass_arr = currentUser.get('associated_password');
-    // console.log ('pass_arr: ' + pass_arr);
-    // var passwrd = pass_arr.map(function (x) { 
-    //     return parseInt(x, 10); 
-    // });
-    // $('#passcode_message', context).text('Enter this passcode: ' + String(passwrd));
+    console.log ('currentUser.username: ' + currentUser.get('username'));
+    var rand_pass = Math.floor(Math.random()*8999+1000);
+    var pass_arr = (rand_pass + '').split('');
+    console.log('pass_arr: ' + pass_arr);
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
@@ -27,22 +24,22 @@ $(document).ready( function() {
     }
 
     var attempt = new Attempt();
-    attempt.set('start_times', []);
-    attempt.set('end_times', []);
-    attempt.set('x_coords', []);
-    attempt.set('y_coords', []);
-    attempt.set('accel_x', []);
-    attempt.set('accel_y', []);
-    attempt.set('accel_z', []);
-    attempt.set('buttons_pressed', []);
-    attempt.set('associated_password', pass_arr);
-    attempt.set('user', currentUser.get('username'));
+    attempt.set('start_times', [])
+    attempt.set('end_times', [])
+    attempt.set('x_coords', [])
+    attempt.set('y_coords', [])
+    attempt.set('accel_x', [])
+    attempt.set('accel_y', [])
+    attempt.set('accel_z', [])
+    attempt.set('buttons_pressed', [])
+    attempt.set('associated_password', pass_arr)
+    attempt.set('user', currentUser.get('username'))
     
     function log_tap_start(evt) 
     {
         attempt.add('start_times',(new Date()).getTime())
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
-    	attempt.add('x_coords', String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
+        attempt.add('x_coords', String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
         attempt.add('y_coords', String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
         attempt.add('accel_x', accelx );
         attempt.add('accel_y', accely );
@@ -59,12 +56,12 @@ $(document).ready( function() {
     var context = $('#passcode');
 
     $('.number').bind('touchstart', function(evt) { 
-    	// evt.originalEvent.target.style.backgroundColor = #E0FFFF;
+        // evt.originalEvent.target.style.backgroundColor = #E0FFFF;
         log_tap_start(evt); 
     });
 
     $('.number').bind('touchend', function(evt) { 
-    	log_tap_end(evt);
+        log_tap_end(evt);
         $('#successMsg', context).text('');
         
         // fill in the next empty slot with a circle
@@ -81,41 +78,26 @@ $(document).ready( function() {
             $('#successMsg', context).text('Thanks!');
             attempt.save(null, {
                 success: function(object) {
-	
-					// Attempting automatic analytics. cq38
-					var crit_times = {
-						s1 =  attempt.get('start_times')[0];
-					}
-					
-					Parse.Analytics.track('critical times', crit_times);
-
                     console.log('attempt successfully saved');
                     attempt = new Attempt();
-                    attempt.set('start_times', []);
-                    attempt.set('end_times', []);
-                    attempt.set('x_coords', []);
-                    attempt.set('y_coords', []);
-                    attempt.set('accel_x', []);
-                    attempt.set('accel_y', []);
-                    attempt.set('accel_z', []);
-                    attempt.set('buttons_pressed', []);
-                    attempt.set('associated_password', pass_arr);
-                    attempt.set('user', currentUser.get('username'));
-                    currentUser.increment('attempts_recorded');
-                    // currentUser.save(null, {
-                    //     success: function(object) {
-                    //         console.log ('attempts_recorded incremented');
-                    //     }
-                    //     error: function(model, error) {
-                    //         console.log ('attempts_recorded failed to increment');
-                    //     }
-                    // });
+                    attempt.set('start_times', [])
+                    attempt.set('end_times', [])
+                    attempt.set('x_coords', [])
+                    attempt.set('y_coords', [])
+                    attempt.set('accel_x', [])
+                    attempt.set('accel_y', [])
+                    attempt.set('accel_z', [])
+                    attempt.set('buttons_pressed', [])
+                    attempt.set('associated_password', pass_arr)
+                    attempt.set('user', currentUser.get('username'))
+                    Parse.User.current().increment('attempts_recorded')
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
         }
+        // evt.originalEvent.target.style.backgroundColor = transparent; 
     });
 
     $('#backspace').bind('touchstart', function(evt) {
