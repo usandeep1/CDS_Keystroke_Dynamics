@@ -13,9 +13,11 @@ $(document).ready(function(){
     }
 
     console.log ('currentUser.username: ' + currentUser.get('username'));
-    var rand_pass = Math.floor(Math.random()*8999+1000);
-    var pass_arr = (rand_pass + '').split('');
-    console.log('pass_arr: ' + pass_arr);
+    var pass_arr = currentUser.get('associated_password');
+    var passwrd = pass_arr.map(function (x) { 
+        return parseInt(x, 10); 
+    });
+    $('#passcode_message', context).text('Enter this passcode: ' + String(passwrd));
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
@@ -24,16 +26,16 @@ $(document).ready(function(){
     }
 
     var attempt = new Attempt();
-    attempt.set('start_times', [])
-    attempt.set('end_times', [])
-    attempt.set('x_coords', [])
-    attempt.set('y_coords', [])
-    attempt.set('accel_x', [])
-    attempt.set('accel_y', [])
-    attempt.set('accel_z', [])
-    attempt.set('buttons_pressed', [])
-    attempt.set('associated_password', pass_arr)
-    attempt.set('user', currentUser.get('username'))
+    attempt.set('start_times', []);
+    attempt.set('end_times', []);
+    attempt.set('x_coords', []);
+    attempt.set('y_coords', []);
+    attempt.set('accel_x', []);
+    attempt.set('accel_y', []);
+    attempt.set('accel_z', []);
+    attempt.set('buttons_pressed', []);
+    attempt.set('associated_password', pass_arr);
+    attempt.set('user', currentUser.get('username'));
     
     function log_tap_start(evt) 
     {
@@ -99,22 +101,20 @@ $(document).ready(function(){
                     attempt.set('associated_password', pass_arr);
                     attempt.set('user', currentUser.get('username'));
                     currentUser.increment('attempts_recorded');
-                    currentUser.save(null, {
-                        success: function(object) {
-                            console.log ('attempts_recorded incremented');
-                        }
-                        error: function(model, error) {
-                            console.log ('attempts_recorded failed to increment');
-                        }
-                    });
-				
+                    // currentUser.save(null, {
+                    //     success: function(object) {
+                    //         console.log ('attempts_recorded incremented');
+                    //     }
+                    //     error: function(model, error) {
+                    //         console.log ('attempts_recorded failed to increment');
+                    //     }
+                    // });
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
         }
-        // evt.originalEvent.target.style.backgroundColor = transparent; 
     });
 
     $('#backspace').bind('touchstart', function(evt) {

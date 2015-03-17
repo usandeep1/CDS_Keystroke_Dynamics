@@ -5,23 +5,40 @@ class User:
     def __init__(self, id, password, trials=None):
         self.id = id
         self.password = password
-        if trials==None:
+
+        if trials is None:
             trials = []
         self.trials = trials
 
     def add_trial(self, trial):
         self.trials.append(trial)
 
+    def generate_features(self, ignore_backspace=True):
+        features = []
+        for t in self.trials:
+            if ignore_backspace:
+                if np.sum(t.valid) == len(t.valid):
+                    features.append(t.flatten())
+
+        return np.array(features)
+
 class Trial:
     def __init__(self, **kwargs):
         self.start = np.array(kwargs['start_times'])
+        s = self.start[0]
+        self.start -= s
         self.end = np.array(kwargs['end_times'])
+        self.end -= s
+        self.hold = self.end - self.start
+        self.jump = np.append(self.start[1:],0) - self.end
+        self.jump = self.jump[:-1]
+
         self.button_name = np.array(kwargs['buttons_pressed'])
-        self.accel_x = np.array(kwargs['accel_x'])
-        self.accel_y = np.array(kwargs['accel_y'])
-        self.accel_z = np.array(kwargs['accel_z'])
-        self.loc_x = np.array(kwargs['x_coords'])
-        self.loc_y = np.array(kwargs['y_coords'])
+        self.accel_x = np.array(kwargs['accel_x'], dtype=float)
+        self.accel_y = np.array(kwargs['accel_y'], dtype=float)
+        self.accel_z = np.array(kwargs['accel_z'], dtype=float)
+        self.loc_x = np.array(kwargs['x_coords'], dtype=int)
+        self.loc_y = np.array(kwargs['y_coords'], dtype=int)
         self.valid = self._valid_clicks()
 
     def _valid_clicks(self):
@@ -33,6 +50,10 @@ class Trial:
                     valid[i - 1] = False
 
         return valid
+
+    def flatten(self):
+        return np.concatenate((self.hold, self.jump, self.accel_x,
+            self.accel_y, self.accel_z, self.loc_x, self.loc_y))
 
 def read_data(filename):
     datatable = {}
