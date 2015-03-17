@@ -87,17 +87,25 @@ $(document).ready( function() {
                 success: function(object) {
                     console.log('attempt successfully saved');
                     attempt = new Attempt();
-                    attempt.set('start_times', [])
-                    attempt.set('end_times', [])
-                    attempt.set('x_coords', [])
-                    attempt.set('y_coords', [])
-                    attempt.set('accel_x', [])
-                    attempt.set('accel_y', [])
-                    attempt.set('accel_z', [])
-                    attempt.set('buttons_pressed', [])
-                    attempt.set('associated_password', pass_arr)
-                    attempt.set('user', currentUser.get('username'))
-                    Parse.User.current().increment('attempts_recorded')
+                    attempt.set('start_times', []);
+                    attempt.set('end_times', []);
+                    attempt.set('x_coords', []);
+                    attempt.set('y_coords', []);
+                    attempt.set('accel_x', []);
+                    attempt.set('accel_y', []);
+                    attempt.set('accel_z', []);
+                    attempt.set('buttons_pressed', []);
+                    attempt.set('associated_password', pass_arr);
+                    attempt.set('user', currentUser.get('username'));
+                    currentUser.increment('attempts_recorded');
+                    currentUser.save(null, {
+                        success: function(object) {
+                            console.log ('attempts_recorded incremented');
+                        }
+                        error: function(model, error) {
+                            console.log ('attempts_recorded failed to increment');
+                        }
+                    });
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
