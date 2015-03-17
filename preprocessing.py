@@ -16,8 +16,9 @@ class User:
     def generate_features(self, ignore_backspace=True):
         features = []
         for t in self.trials:
-            if np.sum(t.valid) == len(t.valid):
-                features.append(t.flatten())
+            if ignore_backspace:
+                if np.sum(t.valid) == len(t.valid):
+                    features.append(t.flatten())
 
         return np.array(features)
 
