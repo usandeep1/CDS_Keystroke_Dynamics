@@ -56,7 +56,7 @@ $(document).ready(function(){
     var context = $('#passcode');
 
     $('.number').bind('touchstart', function(evt) { 
-    	evt.originalEvent.target.style.backgroundColor = #E0FFFF;
+    	// evt.originalEvent.target.style.backgroundColor = #E0FFFF;
         log_tap_start(evt); 
     });
 
@@ -96,7 +96,7 @@ $(document).ready(function(){
                 }
             });
         }
-        evt.originalEvent.target.style.backgroundColor = transparent; 
+        // evt.originalEvent.target.style.backgroundColor = transparent; 
     });
 
     $('#backspace').bind('touchstart', function(evt) {
