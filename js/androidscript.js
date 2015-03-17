@@ -8,7 +8,7 @@ $(document).ready(function(){
     var accelz = 0;
 
     var currentUser = Parse.User.current();
-    if (currentUser === undefined){
+    if (!currentUser){
         window.open("login.html","_top");
     }
 
