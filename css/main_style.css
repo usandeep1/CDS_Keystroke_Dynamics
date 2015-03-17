@@ -60,7 +60,7 @@ body{
     color: #fff;
 }
 
-.number:active {
+.number:hover {
     background-color: #E0FFFF;
 
 }
