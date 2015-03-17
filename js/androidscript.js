@@ -12,11 +12,9 @@ $(document).ready( function() {
         window.open("login.html","_top");
     }
 
-    console.log ('currentUser.username: ' + currentUser.get('username'));
-    var rand_pass = Math.floor(Math.random()*8999+1000);
-    var pass_arr = (rand_pass + '').split('');
-    console.log('pass_arr: ' + pass_arr);
-    $('#passcode_message').text('Hey there');
+    console.log ("currentUser.get('username'): " + currentUser.get('username'));
+    var pass_arr = currentUser.get('associated_password');
+    $('#passcode_message').text('Enter passcode: ' + pass_arr);
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
