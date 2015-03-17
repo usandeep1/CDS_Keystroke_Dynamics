@@ -91,7 +91,7 @@ $(document).ready(function(){
                     attempt.set('user', currentUser.get('username'))
                 },
                 error: function(model, error) {
-                    console.log('attempt failed to save');
+                    alert("Error: " + error.code + " " + error.message);
                 }
             });
         } 
