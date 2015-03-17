@@ -6,7 +6,19 @@ $(document).ready( function() {
     var accelx = 0,
         accely = 0,
         accelz = 0,
-        currentUser = Parse.User.current();
+        delay = 60,
+        currentUser = Parse.User.current(),
+        timerId = setInterval("ShowAlert()", 1000);
+    
+    function ShowAlert() {
+        if (delay != 0) {
+            alert(delay);
+            delay = delay - 1;
+        }
+        else {
+            clearInterval(timerId);
+        }
+    }
     
     if (!currentUser){
         window.open("login.html","_top");
