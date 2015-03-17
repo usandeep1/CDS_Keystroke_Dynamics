@@ -7,19 +7,19 @@ $(document).ready( function() {
         accely = 0,
         accelz = 0,
         delay = 60,
-        currentUser = Parse.User.current(),
-        timerId = setInterval("ShowAlert()", 1000);
+        currentUser = Parse.User.current();
+    //     timerId = setInterval("ShowAlert()", 1000);
     
-    function ShowAlert() {
-        if (delay != 0) {
-            alert(delay);
-            delay = delay - 1;
-        }
-        else {
-            clearInterval(timerId);
-        }
-    }
-    
+    // function ShowAlert() {
+    //     if (delay != 0) {
+    //         alert(delay);
+    //         delay = delay - 1;
+    //     }
+    //     else {
+    //         clearInterval(timerId);
+    //     }
+    // }
+
     if (!currentUser){
         window.open("login.html","_top");
     }
