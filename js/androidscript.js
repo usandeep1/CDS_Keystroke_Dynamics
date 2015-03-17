@@ -39,8 +39,8 @@ $(document).ready(function(){
     {
         attempt.add('start_times',(new Date()).getTime())
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
-    	attempt.add('x_coords:', String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
-        attempt.add('y_coords:', String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
+    	attempt.add('x_coords', String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
+        attempt.add('y_coords', String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
         attempt.add('accel_x', accelx );
         attempt.add('accel_y', accely );
         attempt.add('accel_z', accelz );
