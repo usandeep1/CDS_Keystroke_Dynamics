@@ -26,16 +26,16 @@ $(document).ready(function(){
     }
 
     var attempt = new Attempt();
-    attempt.set('start_times', [])
-    attempt.set('end_times', [])
-    attempt.set('x_coords', [])
-    attempt.set('y_coords', [])
-    attempt.set('accel_x', [])
-    attempt.set('accel_y', [])
-    attempt.set('accel_z', [])
-    attempt.set('buttons_pressed', [])
-    attempt.set('associated_password', pass_arr)
-    attempt.set('user', currentUser.get('username'))
+    attempt.set('start_times', []);
+    attempt.set('end_times', []);
+    attempt.set('x_coords', []);
+    attempt.set('y_coords', []);
+    attempt.set('accel_x', []);
+    attempt.set('accel_y', []);
+    attempt.set('accel_z', []);
+    attempt.set('buttons_pressed', []);
+    attempt.set('associated_password', pass_arr);
+    attempt.set('user', currentUser.get('username'));
     
     function log_tap_start(evt) 
     {
