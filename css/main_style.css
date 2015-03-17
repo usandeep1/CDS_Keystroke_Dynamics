@@ -60,7 +60,7 @@ body{
     color: #fff;
 }
 
-.number:hover {
+.number:focus {
     background-color: #E0FFFF;
 
 }
