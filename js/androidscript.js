@@ -15,7 +15,7 @@ $(document).ready(function(){
     console.log ('currentUser.username: ' + currentUser.get('username'));
     var rand_pass = Math.floor(Math.random()*8999+1000);
     var pass_arr = (rand_pass + '').split('');
-    console.log(pass_arr);
+    console.log('pass_arr' + pass_arr);
 
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
@@ -32,22 +32,24 @@ $(document).ready(function(){
     attempt.set('accel_y', [])
     attempt.set('accel_z', [])
     attempt.set('buttons_pressed', [])
-    attempt.set('associated_password', 0)
+    attempt.set('associated_password', pass_arr)
+    attempt.set('user', currentUser.get('username'))
     
     function log_tap_start(evt) 
     {
-        console.log ( 'start_time: ' + (new Date()).getTime())
+        attempt.add('start_times',(new Date()).getTime())
         keyRect = evt.originalEvent.target.getBoundingClientRect(),
-    	console.log ( 'Relative_X: ' + String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
-        console.log ( 'Relative_Y: ' + String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
-        console.log ( 'accelx: ' + accelx );
-        console.log ( 'accely: ' + accely );
-        console.log ( 'accelz: ' + accelz );
+    	attempt.add('x_coords:', String(parseInt(evt.originalEvent.touches[0].pageX) - parseInt(keyRect.left)));   //maybe change 0 to length - 1 ?????
+        attempt.add('y_coords:', String(parseInt(evt.originalEvent.touches[0].pageY) - parseInt(keyRect.top)));   //maybe change 0 to length - 1 ?????
+        attempt.add('accel_x', accelx );
+        attempt.add('accel_y', accely );
+        attempt.add('accel_z', accelz );
+        attempt.add('buttons_pressed', evt.originalEvent.target.attr("id"));
     }
 
     function log_tap_end(evt) 
     {
-        console.log ( 'end_time: ' + (new Date()).getTime())
+        attempt.add('end_times',(new Date()).getTime())
     }
 
     var numSlotsFilled = 0;
@@ -56,6 +58,7 @@ $(document).ready(function(){
     $('.number').bind('touchstart', function(evt) { 
     	log_tap_start(evt); 
     });
+
     $('.number').bind('touchend', function(evt) { 
     	log_tap_end(evt);
         $('#successMsg', context).text('');
@@ -75,6 +78,17 @@ $(document).ready(function(){
             attempt.save(null, {
                 success: function(object) {
                     console.log('attempt successfully saved');
+                    attempt = new Attempt();
+                    attempt.set('start_times', [])
+                    attempt.set('end_times', [])
+                    attempt.set('x_coords', [])
+                    attempt.set('y_coords', [])
+                    attempt.set('accel_x', [])
+                    attempt.set('accel_y', [])
+                    attempt.set('accel_z', [])
+                    attempt.set('buttons_pressed', [])
+                    attempt.set('associated_password', pass_arr)
+                    attempt.set('user', currentUser.get('username'))
                 },
                 error: function(model, error) {
                     console.log('attempt failed to save');
@@ -83,15 +97,17 @@ $(document).ready(function(){
         } 
     });
 
+    $('#backspace').bind('touchstart', function(evt) {
+        log_tap_start(evt);
+    });
+
     /// CODE FOR HANDLING BACKSPACE /// 
-    $('#backspace').bind('touchend', function(evt) { 
-        // get the last slot that was filled in and clear it
+    $('#backspace').bind('touchend', function(evt) {
+        log_tap_end(evt);
         if (numSlotsFilled !== 0) {
             var lastSlot = $('#input_circles li:nth-of-type(' + numSlotsFilled + ')');
             lastSlot.text('____');
             numSlotsFilled--;
         }
     });
-
-
 });
