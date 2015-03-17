@@ -90,7 +90,15 @@ $(document).ready(function(){
                     attempt.set('buttons_pressed', [])
                     attempt.set('associated_password', pass_arr)
                     attempt.set('user', currentUser.get('username'))
-                    Parse.User.current().increment('attempts_recorded')
+                    currentUser.increment('attempts_recorded')
+                    currentUser.save(null, {
+                        success: function(object) {
+                            console.log ('attempts_recorded incremented');
+                        }
+                        error: function(model, error) {
+                            console.log ('attempts_recorded failed to increment');
+                        }
+                    });
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
