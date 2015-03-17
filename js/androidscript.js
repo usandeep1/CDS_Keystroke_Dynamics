@@ -1,18 +1,18 @@
-$(document).ready(function(){
+$(document).ready( function() {
 
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     var Attempt = Parse.Object.extend("Attempt");
 
-    var accelx = 0;
-    var accely = 0;
-    var accelz = 0;
-
-    var currentUser = Parse.User.current();
+    var accelx = 0,
+        accely = 0,
+        accelz = 0,
+        currentUser = Parse.User.current();
+    
     if (!currentUser){
         window.open("login.html","_top");
     }
 
-    console.log ('currentUser.username: ' + currentUser.get('username'));
+    console.log('currentUser.username: ' + currentUser.get('username'));
     // var pass_arr = currentUser.get('associated_password');
     // console.log ('pass_arr: ' + pass_arr);
     // var passwrd = pass_arr.map(function (x) { 
