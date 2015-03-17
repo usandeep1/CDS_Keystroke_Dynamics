@@ -90,6 +90,7 @@ $(document).ready(function(){
                     attempt.set('buttons_pressed', [])
                     attempt.set('associated_password', pass_arr)
                     attempt.set('user', currentUser.get('username'))
+                    Parse.User.current().increment('attempts_recorded')
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
