@@ -6,19 +6,8 @@ $(document).ready( function() {
     var accelx = 0,
         accely = 0,
         accelz = 0,
-        delay = 60,
-        currentUser = Parse.User.current(),
-        timerId = setInterval("ShowAlert()", 1000);
-
-    function ShowAlert() {
-        if (delay != 0) {
-            alert(delay);
-            delay = delay - 1;
-        }
-        else {
-            clearInterval(timerId);
-        }
-    }
+        currentUser = Parse.User.current()
+        successful_save = false;
 
     if (!currentUser){
         window.open("login.html","_top");
@@ -111,20 +100,24 @@ $(document).ready( function() {
                     attempt.set('buttons_pressed', []);
                     attempt.set('associated_password', pass_arr);
                     attempt.set('user', currentUser.get('username'));
-                    currentUser.increment('attempts_recorded');
-                    // currentUser.save(null, {
-                    //     success: function(object) {
-                    //         console.log ('attempts_recorded incremented');
-                    //     }
-                    //     error: function(model, error) {
-                    //         console.log ('attempts_recorded failed to increment');
-                    //     }
-                    // });
+                    successful_save = true;
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
+            if (successful_save){
+                currentUser.increment('attempts_recorded');
+                currentUser.save(null, {
+                    success: function(object) {
+                        console.log ('attempts_recorded incremented');
+                    }
+                    error: function(model, error) {
+                        console.log ('attempts_recorded failed to increment');
+                    }
+                });
+                successful_save = false;
+            }
         }
         ShowAlert();
         // evt.originalEvent.target.css({
