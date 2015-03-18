@@ -12,7 +12,7 @@ $(document).ready( function() {
         window.open("index.html","_top");
     }
 
-    if (currentUser.get('attempts_recorded') == '30'){
+    if (parseInt(currentUser.get('attempts_recorded')) >= 30){
         window.open("thanks.html","_top");
     }
 
