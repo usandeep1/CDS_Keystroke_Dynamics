@@ -63,9 +63,9 @@ $(document).ready( function() {
     var context = $('#passcode');
 
     $('.number').bind('touchstart', function(evt) { 
-        evt.originalEvent.target.css({
+        evt.originalEvent.target.css(
             "background-color", "#E0FFFF"
-        });
+        );
         log_tap_start(evt); 
     });
 
@@ -116,9 +116,9 @@ $(document).ready( function() {
             
             if (currentUser.get('attempts_recorded') == )
         }
-        evt.originalEvent.target.css({
+        evt.originalEvent.target.css(
             "background-color", "transparent"
-        }); 
+        ); 
     });
 
     $('#backspace').bind('touchstart', function(evt) {
