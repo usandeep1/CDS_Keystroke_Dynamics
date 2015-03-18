@@ -9,7 +9,11 @@ $(document).ready( function() {
         currentUser = Parse.User.current();
 
     if (!currentUser){
-        window.open("login.html","_top");
+        window.open("index.html","_top");
+    }
+
+    if (currentUser.get('attempts_recorded') == '30'){
+        window.open("thanks.html","_top");
     }
 
     var ratio = window.devicePixelRatio || 1;
@@ -17,7 +21,7 @@ $(document).ready( function() {
     var screen_height = screen.height * ratio;
     if ((currentUser.get('screen_width') != screen_width) || (currentUser.get('screen_height') != screen_height)){
         alert('The screen size of this device does not match the screen size of the device this account was created on.');
-        window.open("login.html","_top");
+        window.open("index.html","_top");
     }
 
     console.log ("currentUser.get('username'): " + currentUser.get('username'));
@@ -101,8 +105,7 @@ $(document).ready( function() {
             
             // print a success message on completion
             // $('#successMsg', context).text('Thanks!');
-            if (valid_attempt(attempt.get('buttons_pressed'), pass_arr)){
-                alert ('Thanks!'); 
+            if (valid_attempt(attempt.get('buttons_pressed'), pass_arr)){ 
                 attempt.save(null, {
                 success: function(object) {
                     console.log('attempt successfully saved');
@@ -110,6 +113,11 @@ $(document).ready( function() {
                     currentUser.save(null, {
                         success: function(object) {
                             console.log ('attempts_recorded incremented');
+                            temp = currentUser.get('attempts_recorded');
+                            alert ('Thanks!\n' + temp + ' attempts recorded so far');
+                            if (temp == 30) {
+                                window.open("thanks.html","_top");
+                            }
                         },
                         error: function(model, error) {
                             console.log ('attempts_recorded failed to increment');

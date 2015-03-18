@@ -19,7 +19,7 @@ $(document).ready(function(){
         user.set('screen_height',screen.height * ratio);
         user.signUp(null, {
           success: function(user) {
-            window.open('index.html',"_top")
+            window.open('main.html',"_top")
           },
           error: function(user, error) {
             alert("Error: " + error.code + " " + error.message);
