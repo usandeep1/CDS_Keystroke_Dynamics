@@ -69,7 +69,7 @@ $(document).ready( function() {
 
     $('.number').bind('touchend', function(evt) { 
         log_tap_end(evt);
-        $('#successMsg', context).text('');
+        // $('#successMsg', context).text('');
         
         // fill in the next empty slot with a circle
         var nextSlot = $('#input_circles li:nth-of-type(' + (numSlotsFilled + 1) + ')');
@@ -82,7 +82,8 @@ $(document).ready( function() {
             numSlotsFilled = 0;
             
             // print a success message on completion
-            $('#successMsg', context).text('Thanks!');
+            // $('#successMsg', context).text('Thanks!');
+            alert ('Thanks!');
             attempt.save(null, {
                 success: function(object) {
                     console.log('attempt successfully saved');
