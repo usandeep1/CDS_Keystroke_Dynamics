@@ -60,10 +60,10 @@ body{
     color: #fff;
 }
 
-.number:active {
+/*.number:active {
     background-color: #E0FFFF;
 
-}
+}*/
 
 #successMsg{
     color: #FFF;
