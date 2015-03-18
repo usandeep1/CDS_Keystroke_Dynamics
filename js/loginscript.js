@@ -25,6 +25,7 @@ $(document).ready(function(){
             alert("Error: " + error.code + " " + error.message);
           }
         });
+        event.preventDefault();
     });
 
     $("#login_user_btn").on("click",function(event){
