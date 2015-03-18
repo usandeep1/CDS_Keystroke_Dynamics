@@ -104,7 +104,7 @@ $(document).ready( function() {
             
             // print a success message on completion
             // $('#successMsg', context).text('Thanks!');
-            if (valid_attempt(attempt.get('buttons_pressed')), pass_arr){
+            if (valid_attempt(attempt.get('buttons_pressed'), pass_arr)){
                 alert ('Thanks!'); 
                 attempt.save(null, {
                 success: function(object) {
