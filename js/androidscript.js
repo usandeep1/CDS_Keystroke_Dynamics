@@ -33,6 +33,7 @@ $(document).ready( function() {
                 new_arr.push(arr[i]);
             }
         }
+        console.log ('new_arr' + new_arr);
         return (new_arr === passarray);
     }
 
