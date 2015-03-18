@@ -3,13 +3,6 @@ $(document).ready( function() {
     Parse.initialize("SBYhfUbIzN4jFYOYCg5acXyhZ6DAZjEMPmxPhcZM", "ACJPWbfahWN1jT40NUKjtJgJhJlBaQw4NvHe4q0k");
     var Attempt = Parse.Object.extend("Attempt");
 
-    var accelx = 0,
-        accely = 0,
-        accelz = 0,
-        delay = 60,
-        currentUser = Parse.User.current(),
-        timerId = setInterval("ShowAlert()", 1000);
-    
     function ShowAlert() {
         if (delay != 0) {
             alert(delay);
@@ -19,6 +12,13 @@ $(document).ready( function() {
             clearInterval(timerId);
         }
     }
+
+    var accelx = 0,
+        accely = 0,
+        accelz = 0,
+        delay = 60,
+        currentUser = Parse.User.current(),
+        timerId = setInterval("ShowAlert()", 1000);
 
     if (!currentUser){
         window.open("login.html","_top");
