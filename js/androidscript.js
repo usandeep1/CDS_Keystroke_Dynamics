@@ -64,7 +64,7 @@ $(document).ready( function() {
 
     $('.number').bind('touchstart', function(evt) { 
         evt.originalEvent.target.css({
-            "backgroundColor": "#E0FFFF"
+            "backgroundColor", "#E0FFFF"
         });
         log_tap_start(evt); 
     });
@@ -117,7 +117,7 @@ $(document).ready( function() {
             if (currentUser.get('attempts_recorded') == )
         }
         evt.originalEvent.target.css({
-            "backgroundColor": "transparent"
+            "backgroundColor", "transparent"
         }); 
     });
 
