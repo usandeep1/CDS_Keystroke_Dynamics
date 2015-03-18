@@ -34,6 +34,7 @@ $(document).ready( function() {
             }
         }
         result = true;
+        console.log ('passarray: ' + passarray);
         for (i = 0; i < passarray.length; i++){
             if ((new_arr[i] !== 'key' + passarray[i]) && (result)){
                 result = false;
