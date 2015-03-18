@@ -34,9 +34,10 @@ $(document).ready( function() {
             }
         }
         result = true;
-        for (i = 0; i < new_arr.length; i++){
+        for (i = 0; i < passarray.length; i++){
             if ((new_arr[i] !== 'key' + passarray[i]) && (result)){
                 result = false;
+                break;
             }
         }
         return result;
