@@ -32,7 +32,7 @@ $(document).ready(function(){
         console.log ('login_user_btn function');
         Parse.User.logIn(form.userid.value, form.pswrd.value, {
           success: function(user) {
-            window.open('index.html',"_top")
+            window.open('main.html',"_top")
           },
           error: function(user, error) {
             alert("Error: " + error.code + " " + error.message);
