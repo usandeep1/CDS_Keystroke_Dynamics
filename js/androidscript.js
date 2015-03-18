@@ -106,20 +106,19 @@ $(document).ready( function() {
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
-            // if (successful_save){
-            //     currentUser.increment('attempts_recorded');
-            //     currentUser.save(null, {
-            //         success: function(object) {
-            //             console.log ('attempts_recorded incremented');
-            //         }
-            //         error: function(model, error) {
-            //             console.log ('attempts_recorded failed to increment');
-            //         }
-            //     });
-            //     successful_save = false;
-            // }
+            if (successful_save){
+                currentUser.increment('attempts_recorded');
+                currentUser.save(null, {
+                    success: function(object) {
+                        console.log ('attempts_recorded incremented');
+                    }
+                    error: function(model, error) {
+                        console.log ('attempts_recorded failed to increment');
+                    }
+                });
+                successful_save = false;
+            }
         }
-        ShowAlert();
         // evt.originalEvent.target.css({
         //     "backgroundColor": "transparent"
         // }); 
