@@ -116,6 +116,7 @@ $(document).ready( function() {
                 //         console.log ('attempts_recorded failed to increment');
                 //     }
                 // });
+                currentUser.save(null, {});
                 successful_save = false;
             }
         }
