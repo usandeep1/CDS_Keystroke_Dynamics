@@ -24,6 +24,19 @@ $(document).ready( function() {
     var pass_arr = currentUser.get('associated_password');
     $('#passcode_message').text('Enter passcode: ' + pass_arr);
 
+    function valid_attempt(arr, passarray) {
+        new_arr = []
+        for (i = 0; i < arr.length; i++) {
+            if (arr[i] === "backspace") {
+                new_arr.pop();
+            } else {
+                new_arr.push(arr[i]);
+            }
+        }
+        return (new_arr === passarray);
+    }
+
+
     window.ondevicemotion = function(event) {
         accelx = event.accelerationIncludingGravity.x;
         accely = event.accelerationIncludingGravity.y;
@@ -83,21 +96,11 @@ $(document).ready( function() {
             
             // print a success message on completion
             // $('#successMsg', context).text('Thanks!');
-            alert ('Thanks!');
-            attempt.save(null, {
+            if (valid_attempt(attempt.get('buttons_pressed')), pass_arr){
+                alert ('Thanks!'); 
+                attempt.save(null, {
                 success: function(object) {
                     console.log('attempt successfully saved');
-                    attempt = new Attempt();
-                    attempt.set('start_times', []);
-                    attempt.set('end_times', []);
-                    attempt.set('x_coords', []);
-                    attempt.set('y_coords', []);
-                    attempt.set('accel_x', []);
-                    attempt.set('accel_y', []);
-                    attempt.set('accel_z', []);
-                    attempt.set('buttons_pressed', []);
-                    attempt.set('associated_password', pass_arr);
-                    attempt.set('user', currentUser.get('username'));
                     currentUser.increment('attempts_recorded');
                     currentUser.save(null, {
                         success: function(object) {
@@ -112,6 +115,20 @@ $(document).ready( function() {
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
+            } else {
+                alert ('Wrong password typed... try again please');  
+            }
+            attempt = new Attempt();
+            attempt.set('start_times', []);
+            attempt.set('end_times', []);
+            attempt.set('x_coords', []);
+            attempt.set('y_coords', []);
+            attempt.set('accel_x', []);
+            attempt.set('accel_y', []);
+            attempt.set('accel_z', []);
+            attempt.set('buttons_pressed', []);
+            attempt.set('associated_password', pass_arr);
+            attempt.set('user', currentUser.get('username'));
         }
         // evt.originalEvent.target.css( "background-color", "transparent" ); 
     });
