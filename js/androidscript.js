@@ -6,8 +6,7 @@ $(document).ready( function() {
     var accelx = 0,
         accely = 0,
         accelz = 0,
-        currentUser = Parse.User.current()
-        successful_save = false;
+        currentUser = Parse.User.current();
 
     if (!currentUser){
         window.open("login.html","_top");
@@ -100,25 +99,20 @@ $(document).ready( function() {
                     attempt.set('buttons_pressed', []);
                     attempt.set('associated_password', pass_arr);
                     attempt.set('user', currentUser.get('username'));
-                    successful_save = true;
+                    currentUser.increment('attempts_recorded');
+                    currentUser.save(null, {
+                        success: function(object) {
+                            console.log ('attempts_recorded incremented');
+                        },
+                        error: function(model, error) {
+                            console.log ('attempts_recorded failed to increment');
+                        }
+                    });
                 },
                 error: function(model, error) {
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
-            if (successful_save){
-                currentUser.increment('attempts_recorded');
-                // currentUser.save(null, {
-                //     success: function(object) {
-                //         console.log ('attempts_recorded incremented');
-                //     }
-                //     error: function(model, error) {
-                //         console.log ('attempts_recorded failed to increment');
-                //     }
-                // });
-                currentUser.save(null, {});
-                successful_save = false;
-            }
         }
         // evt.originalEvent.target.css({
         //     "backgroundColor": "transparent"
