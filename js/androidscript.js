@@ -8,7 +8,7 @@ $(document).ready( function() {
         accelz = 0,
         delay = 60,
         currentUser = Parse.User.current(),
-        timerId =  = setInterval("ShowAlert()", 1000);
+        timerId = setInterval("ShowAlert()", 1000);
 
     function ShowAlert() {
         if (delay != 0) {
