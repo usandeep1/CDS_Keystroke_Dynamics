@@ -17,8 +17,7 @@ $(document).ready( function() {
         accely = 0,
         accelz = 0,
         delay = 60,
-        currentUser = Parse.User.current(),
-        timerId = setInterval("ShowAlert()", 1000);
+        currentUser = Parse.User.current();
 
     if (!currentUser){
         window.open("login.html","_top");
@@ -124,6 +123,7 @@ $(document).ready( function() {
                 }
             });
         }
+        ShowAlert();
         // evt.originalEvent.target.style.backgroundColor = transparent; 
     });
 
