@@ -33,8 +33,13 @@ $(document).ready( function() {
                 new_arr.push(arr[i]);
             }
         }
-        console.log ('new_arr' + new_arr);
-        return (new_arr === passarray);
+        result = true;
+        for (i = 0; i < new_arr.length; i++){
+            if ((new_arr[i] !== 'key' + passarray[i]) && (result)){
+                result = false;
+            }
+        }
+        return result;
     }
 
 
