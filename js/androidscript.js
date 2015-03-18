@@ -63,8 +63,7 @@ $(document).ready( function() {
     var context = $('#passcode');
 
     $('.number').bind('touchstart', function(evt) { 
-        // evt.originalEvent.target.css( "background-color", "white" );
-        console.log (evt.originalEvent.target);
+        evt.originalEvent.target.css( "background-color", "white" );
         log_tap_start(evt); 
     });
 
@@ -113,10 +112,11 @@ $(document).ready( function() {
                 }
             });
             
-            if (currentUser.get('attempts_recorded') == )
+            // if (currentUser.get('attempts_recorded') == 15){
+                
+            // }
         }
-        console.log (evt.originalEvent.target);
-        // evt.originalEvent.target.css( "background-color", "transparent" ); 
+        evt.originalEvent.target.css( "background-color", "transparent" ); 
     });
 
     $('#backspace').bind('touchstart', function(evt) {
