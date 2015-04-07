@@ -17,6 +17,35 @@ def parse_args():
 
     return parser.parse_args()
 
+def score(train_x, train_labels, test_x, test_labels, classifier_class):
+    label_set = set(train_labels)
+
+    far = 0.0
+    frr = 0.0
+    total = 0.0
+    # Look at each user
+    for l in label_set:
+        train_y = train_labels.copy()
+        test_y = test_labels.copy()
+
+        # Replace the rest with intruder
+        train_y[~(train_y==l)] = 'intruder'
+        test_y[~(test_y==l)] = 'intruder'
+
+        # Train
+        classifier = classifier_class()
+        classifier.fit(train_x, train_y)
+
+        predicted_y = classifier.predict(test_x)
+        false_positives = np.sum(predicted_y[predicted_y==l & ~(test_y==l)])
+        false_negatives = np.sum(predicted_y[~(predicted_y==l) & test_y==l])
+
+        far += false_positives
+        frr += false_negatives
+        total += len(predcted_y)
+
+    return far, frr
+
 if __name__=="__main__":
     args = parse_args()
     
@@ -37,6 +66,13 @@ if __name__=="__main__":
     labels = np.array(labels)
     data = np.array(data)
 
+    if args.classifier=="svm":
+        classifier_class = LinearSVC
+    elif args.classifier=="random_forests":
+        classifier_class = RandomForestClassifier
+    elif args.classifier=="lda":
+        classifier_class = LDA
+
     overall_accuracy = 0.0
     total = 0.0
     kf = KFold(len(labels), n_folds=4)
@@ -46,13 +82,12 @@ if __name__=="__main__":
         test_x = data[test]
         test_y = labels[test]
 
+        far, frr = score(train_x, train_y, test_x, test_y, classifier_class)
+        print "FAR {}".format(far)
+        print "FRR {}".format(frr)
+
         print "Training Classifier..."
-        if args.classifier=="svm":
-            classifier = LinearSVC()
-        elif args.classifier=="random_forests":
-            classifier = RandomForestClassifier()
-        elif args.classifier=="lda":
-            classifier = LDA()
+        classifier = classifier_class()
 
         classifier.fit(train_x, train_y)
 
