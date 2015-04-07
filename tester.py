@@ -2,7 +2,7 @@ import argparse
 
 from sklearn.cross_validation import KFold
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 from sklearn.lda import LDA
 import numpy as np
 
@@ -48,7 +48,7 @@ if __name__=="__main__":
 
         print "Training Classifier..."
         if args.classifier=="svm":
-            classifier = SVC()
+            classifier = LinearSVC()
         elif args.classifier=="random_forests":
             classifier = RandomForestClassifier()
         elif args.classifier=="lda":
