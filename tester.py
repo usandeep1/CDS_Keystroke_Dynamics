@@ -37,14 +37,14 @@ def score(train_x, train_labels, test_x, test_labels, classifier_class):
         classifier.fit(train_x, train_y)
 
         predicted_y = np.array([classifier.predict(x) for x in test_x])
-        false_positives = np.sum(predicted_y[predicted_y==l & ~(test_y==l)])
-        false_negatives = np.sum(predicted_y[~(predicted_y==l) & test_y==l])
+        false_positives = np.sum((predicted_y==l) & ~(test_y==l))
+        false_negatives = np.sum(~(predicted_y==l) & (test_y==l))
 
         far += false_positives
         frr += false_negatives
-        total += len(predcted_y)
+        total += len(predicted_y)
 
-    return far, frr
+    return far / total, frr / total
 
 if __name__=="__main__":
     args = parse_args()
