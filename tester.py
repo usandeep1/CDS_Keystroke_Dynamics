@@ -10,8 +10,8 @@ import preprocessing
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Keystroke Dynamics Tester")
-    parser.add_argument("--path", dest="path", required=True, type=str,
-        help="Path to file. REQUIRED")
+    parser.add_argument("--path", dest="path", default="new_attempts.json", type=str,
+        help="Path to file")
     parser.add_argument("--classifier", dest="classifier", default="svm",
         choices=["random_forests", "lda", "svm"], help="Type of classifier to use")
 
