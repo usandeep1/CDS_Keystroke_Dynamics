@@ -84,17 +84,4 @@ if __name__=="__main__":
         far, frr = score(train_x, train_y, test_x, test_y, classifier_class)
         print "FAR {}".format(far)
         print "FRR {}".format(frr)
-
-        print "Training Classifier..."
-        classifier = classifier_class()
-
-        classifier.fit(train_x, train_y)
-
-        print "Test Classifier..."
-        accuracy = classifier.score(test_x, test_y)
-        # Incorporate False Acceptance Rate and False Rejection Rate
-        print accuracy
-        overall_accuracy += accuracy * len(test_y)
-        total += len(test_y)
-
-    print "Average Accuracy: {}".format(overall_accuracy / total)
+        print "Accuracy {}".format(1.0 - far - frr)
