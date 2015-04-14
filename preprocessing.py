@@ -13,7 +13,11 @@ class User:
     def add_trial(self, trial):
         self.trials.append(trial)
 
-    def generate_features(self, ignore_backspace=True):
+    def generate_features(self, type="basic", ignore_backspace=True):
+        if type=="basic":
+            return self._basic_features()
+    
+    def _basic_features(self, ignore_backspace=True):
         features = []
         num_trials = 0
         for t in self.trials:

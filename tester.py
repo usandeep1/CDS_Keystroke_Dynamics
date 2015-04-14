@@ -14,6 +14,8 @@ def parse_args():
         help="Path to file")
     parser.add_argument("--classifier", dest="classifier", default="svm",
         choices=["random_forests", "lda", "svm"], help="Type of classifier to use")
+    parser.add_argument("--features", dest="feat", default="basic",
+        choices=["basic"], help="Type of feature to use")
 
     return parser.parse_args()
 
@@ -58,7 +60,7 @@ if __name__=="__main__":
     labels = []
     data = []
     for u in users:
-        feats, num_trials = u.generate_features()
+        feats, num_trials = u.generate_features(args.feat)
         labels += np.repeat(u.id, num_trials)
         data += np.split(feats, num_trials)
 
