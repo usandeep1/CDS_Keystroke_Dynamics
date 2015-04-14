@@ -58,8 +58,7 @@ if __name__=="__main__":
     labels = []
     data = []
     for u in users:
-        num_trials = len(u.trials)
-        feats = u.generate_features()
+        feats, num_trials = u.generate_features()
         labels += np.repeat(u.id, num_trials)
         data += np.split(feats, num_trials)
 

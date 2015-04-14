@@ -15,12 +15,14 @@ class User:
 
     def generate_features(self, ignore_backspace=True):
         features = []
+        num_trials = 0
         for t in self.trials:
             if ignore_backspace:
                 if np.sum(t.valid) == len(t.valid):
                     features.append(t.flatten())
+                    num_trials += 1
 
-        return np.array(features)
+        return np.array(features), num_trials
 
 class Trial:
     def __init__(self, **kwargs):
@@ -29,6 +31,8 @@ class Trial:
         self.start -= s
         self.end = np.array(kwargs['end_times'])
         self.end -= s
+        if len(self.end) != len(self.start):
+            print kwargs
         self.hold = self.end - self.start
         self.jump = np.append(self.start[1:],0) - self.end
         self.jump = self.jump[:-1]
@@ -55,6 +59,14 @@ class Trial:
         return np.concatenate((self.hold, self.jump, self.accel_x,
             self.accel_y, self.accel_z, self.loc_x, self.loc_y))
 
+def valid_check(**kwargs):
+    start = np.array(kwargs['start_times'])
+    end = np.array(kwargs['end_times'])
+    if len(end) != len(start):
+        return False
+
+    return True
+
 def read_data(filename):
     datatable = {}
     with open(filename) as f:
@@ -69,6 +81,7 @@ def read_data(filename):
             users[name] = User(name, password)
 
         u = users[name]
-        u.add_trial(Trial(**attr))
+        if valid_check(**attr):
+            u.add_trial(Trial(**attr))
 
     return [u for _,u in users.iteritems()]
