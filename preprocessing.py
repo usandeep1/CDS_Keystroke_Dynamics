@@ -22,7 +22,8 @@ class User:
                     features.append(t.flatten())
                     num_trials += 1
 
-        return np.array(features), num_trials
+        features = np.array(features)
+        return features, num_trials
 
 class Trial:
     def __init__(self, **kwargs):

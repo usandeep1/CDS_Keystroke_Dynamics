@@ -36,7 +36,7 @@ def score(train_x, train_labels, test_x, test_labels, classifier_class):
         classifier = classifier_class()
         classifier.fit(train_x, train_y)
 
-        predicted_y = classifier.predict(test_x)
+        predicted_y = np.array([classifier.predict(x) for x in test_x])
         false_positives = np.sum(predicted_y[predicted_y==l & ~(test_y==l)])
         false_negatives = np.sum(predicted_y[~(predicted_y==l) & test_y==l])
 
@@ -63,7 +63,7 @@ if __name__=="__main__":
         data += np.split(feats, num_trials)
 
     labels = np.array(labels)
-    data = np.array(data)
+    data = np.array(data)[:,0,:]
 
     if args.classifier=="svm":
         classifier_class = LinearSVC
