@@ -13,21 +13,25 @@ class User:
     def add_trial(self, trial):
         self.trials.append(trial)
 
-    def generate_features(self, type="basic", ignore_backspace=True):
-        if type=="basic":
-            return self._basic_features()
-    
-    def _basic_features(self, ignore_backspace=True):
+    def generate_features(self, type="basic"):
         features = []
         num_trials = 0
         for t in self.trials:
-            if ignore_backspace:
-                if np.sum(t.valid) == len(t.valid):
-                    features.append(t.flatten())
+            if type=="basic":
+                f = self._basic_features()
+                if f is not None:
+                    features.append(f)
                     num_trials += 1
 
         features = np.array(features)
         return features, num_trials
+    
+    def _basic_features(self):
+        f = None
+        if np.sum(t.valid) == len(t.valid):
+            f = t.flatten()
+
+        return f
 
 class Trial:
     def __init__(self, **kwargs):
