@@ -15,7 +15,7 @@ def parse_args():
     parser.add_argument("--classifier", dest="classifier", default="svm",
         choices=["random_forests", "lda", "svm"], help="Type of classifier to use")
     parser.add_argument("--features", dest="feat", default="basic",
-        choices=["basic"], help="Type of feature to use")
+        choices=["basic", "advanced"], help="Type of feature to use")
 
     return parser.parse_args()
 

@@ -20,7 +20,8 @@ class User:
             f = None
             if type=="basic":
                 f = self._basic_features()
-
+            else:
+                f = self._advanced_features()
             if f is not None:
                 features.append(f)
                 num_trials += 1
@@ -32,7 +33,13 @@ class User:
         f = None
         if np.sum(t.valid) == len(t.valid):
             f = t.flatten()
+        return f
 
+    def _advanced_features(self):
+        f = None
+        if np.sum(t.valid) == len(t.valid):
+            ngraph = t.generate_ngraph
+            return np.concatenate((self.hold, self.accel_x, self.accel_y, self.accel_z, ngraph))
         return f
 
 class Trial:
@@ -69,6 +76,17 @@ class Trial:
     def flatten(self):
         return np.concatenate((self.hold, self.jump, self.accel_x,
             self.accel_y, self.accel_z, self.loc_x, self.loc_y))
+
+    def generate_ngraph(self):
+        ngraph = np.empty()
+        # generate digraph features
+        for i in xrange(len(self.start)-1):
+            np.append(ngraph, self.start[i+1] - self.start[i])
+        # generate trigraph features
+        for j in xrange(len(self.start)-2):
+            np.append(ngraph, self.start[i+2] - self.start[i])
+        return ngraph
+
 
 def valid_check(**kwargs):
     start = np.array(kwargs['start_times'])
