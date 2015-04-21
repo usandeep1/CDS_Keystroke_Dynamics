@@ -17,11 +17,13 @@ class User:
         features = []
         num_trials = 0
         for t in self.trials:
+            f = None
             if type=="basic":
                 f = self._basic_features()
-                if f is not None:
-                    features.append(f)
-                    num_trials += 1
+
+            if f is not None:
+                features.append(f)
+                num_trials += 1
 
         features = np.array(features)
         return features, num_trials
