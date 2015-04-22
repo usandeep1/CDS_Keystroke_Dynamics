@@ -38,9 +38,11 @@ class User:
     def _advanced_features(self, t):
         f = None
         if np.sum(t.valid) == len(t.valid):
-            ngraph = t.generate_ngraph
-            return np.array([t.hold, t.accel_x, t.accel_y, t.accel_z, ngraph]).flatten()
-            #return np.concatenate((t.hold, t.accel_x, t.accel_y, t.accel_z, ngraph))
+            f = np.array([t.hold, t.accel_x, t.accel_y, t.accel_z]).flatten()
+            # generate ngraph features and add them to our feature vector
+            ngraph = t.generate_ngraph()
+            for n in np.nditer(ngraph):
+                f = np.append(f,n)
         return f
 
 class Trial:
@@ -79,15 +81,14 @@ class Trial:
             self.accel_y, self.accel_z, self.loc_x, self.loc_y))
 
     def generate_ngraph(self):
-        ngraph = np.empty()
+        ngraph = np.empty([5,0])
         # generate digraph features
         for i in xrange(len(self.start)-1):
-            np.append(ngraph, self.start[i+1] - self.start[i])
+            ngraph = np.append(ngraph, (self.start[i+1] - self.start[i]))
         # generate trigraph features
         for j in xrange(len(self.start)-2):
-            np.append(ngraph, self.start[i+2] - self.start[i])
+            ngraph = np.append(ngraph, (self.start[j+2] - self.start[j]))
         return ngraph
-
 
 def valid_check(**kwargs):
     start = np.array(kwargs['start_times'])
