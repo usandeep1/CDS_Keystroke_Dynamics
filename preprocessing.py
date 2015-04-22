@@ -19,9 +19,9 @@ class User:
         for t in self.trials:
             f = None
             if type=="basic":
-                f = self._basic_features()
+                f = self._basic_features(t)
             else:
-                f = self._advanced_features()
+                f = self._advanced_features(t)
             if f is not None:
                 features.append(f)
                 num_trials += 1
@@ -29,17 +29,18 @@ class User:
         features = np.array(features)
         return features, num_trials
     
-    def _basic_features(self):
+    def _basic_features(self, t):
         f = None
         if np.sum(t.valid) == len(t.valid):
             f = t.flatten()
         return f
 
-    def _advanced_features(self):
+    def _advanced_features(self, t):
         f = None
         if np.sum(t.valid) == len(t.valid):
             ngraph = t.generate_ngraph
-            return np.concatenate((self.hold, self.accel_x, self.accel_y, self.accel_z, ngraph))
+            return np.array([t.hold, t.accel_x, t.accel_y, t.accel_z, ngraph]).flatten()
+            #return np.concatenate((t.hold, t.accel_x, t.accel_y, t.accel_z, ngraph))
         return f
 
 class Trial:
